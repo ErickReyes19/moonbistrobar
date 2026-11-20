@@ -1,0 +1,134 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { navLinks, site } from '../data/site';
+---
+
+<header
+  id="site-header"
+  data-scrolled="false"
+  data-hidden="false"
+  class="group fixed inset-x-0 top-0 z-50 border-b border-transparent transition-[background-color,border-color,translate] duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] focus-within:!translate-y-0 data-[hidden=true]:-translate-y-full data-[scrolled=true]:border-gold/15 data-[scrolled=true]:bg-night"
+>
+  <div class="wrap flex h-[4.5rem] items-center justify-between gap-6 lg:h-20">
+    <a href="#inicio" class="shrink-0 rounded-sm" aria-label="Moon Bistro Bar, ir al inicio">
+      <Logo />
+    </a>
+
+    <nav aria-label="Principal" class="hidden lg:block">
+      <ul class="flex items-center gap-8 text-[0.9375rem]">
+        {
+          navLinks.map((l) => (
+            <li>
+              <a href={l.href} class="link-draw py-2 text-moon/85 hover:text-moon" data-nav-link>
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href={site.whatsapp.href} class="btn btn-primary hidden !min-h-11 !px-5 text-[0.9375rem] sm:inline-flex" rel="noopener" target="_blank">
+        <Icon name="whatsapp" />
+        Reservar
+      </a>
+      <button
+        type="button"
+        id="menu-toggle"
+        class="inline-flex size-11 items-center justify-center rounded-full border border-gold/40 text-moon lg:hidden"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="sr-only" data-label>Abrir menú</span>
+        <Icon name="menu" class="size-5 [[aria-expanded=true]>&]:hidden" />
+        <Icon name="close" class="hidden size-5 [[aria-expanded=true]>&]:block" />
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="fixed inset-0 top-[4.5rem] z-40 hidden flex-col bg-night lg:hidden" data-open="false">
+    <div class="wrap flex flex-1 flex-col justify-between overflow-y-auto pb-[calc(2rem+env(safe-area-inset-bottom))] pt-8">
+      <nav aria-label="Menú móvil">
+        <ul class="flex flex-col">
+          {
+            navLinks.map((l) => (
+              <li class="border-b border-gold/15">
+                <a href={l.href} class="flex min-h-16 items-center font-display text-[2rem] text-moon" data-mobile-link>
+                  {l.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <div class="mt-10 flex flex-col gap-3">
+        <a href={site.whatsapp.href} class="btn btn-primary w-full" rel="noopener" target="_blank">
+          <Icon name="whatsapp" />Reservar por WhatsApp
+        </a>
+        <a href={site.phone.href} class="btn btn-ghost w-full"><Icon name="phone" />Llamar al {site.phone.display}</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header')!;
+  const toggle = document.getElementById('menu-toggle') as HTMLButtonElement;
+  const panel = document.getElementById('mobile-menu')!;
+  const label = toggle.querySelector('[data-label]')!;
+
+  // Fondo sólido cuando el hero deja de estar debajo del header
+  const hero = document.getElementById('inicio');
+  if (hero) {
+    new IntersectionObserver(
+      ([entry]) => header.setAttribute('data-scrolled', String(!entry.isIntersecting)),
+      { rootMargin: '-80px 0px 0px 0px' },
+    ).observe(hero);
+  }
+
+  function setOpen(open: boolean) {
+    toggle.setAttribute('aria-expanded', String(open));
+    label.textContent = open ? 'Cerrar menú' : 'Abrir menú';
+    panel.classList.toggle('hidden', !open);
+    panel.classList.toggle('flex', open);
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+    document.documentElement.dataset.menuOpen = String(open);
+    // Pausa el smooth scroll mientras el menú cubre la página
+    if (open) window.__moonLenis?.stop();
+    else window.__moonLenis?.start();
+    if (open) {
+      header.setAttribute('data-scrolled', 'true');
+      header.setAttribute('data-hidden', 'false');
+    }
+  }
+  toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+  panel.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+
+  // Enlace activo según la sección visible
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]')];
+  const sections = links
+    .map((l) => document.querySelector<HTMLElement>(l.getAttribute('href')!))
+    .filter((s): s is HTMLElement => !!s);
+  const spy = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        links.forEach((l) =>
+          l.getAttribute('href') === `#${entry.target.id}`
+            ? l.setAttribute('aria-current', 'true')
+            : l.removeAttribute('aria-current'),
+        );
+      });
+    },
+    { rootMargin: '-45% 0px -50% 0px' },
+  );
+  sections.forEach((s) => spy.observe(s));
+</script>

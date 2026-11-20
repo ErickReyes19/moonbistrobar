@@ -1,0 +1,125 @@
+{
+  "version": 2,
+  "skills": {
+    "add-integration": {
+      "source": "incluud/astro-agent-skills",
+      "commit": "4b4355ecea8ef4f68c9025f3de5a73c27df59310",
+      "sourceType": "github",
+      "skillPath": "skills/add-integration/SKILL.md",
+      "computedHash": "209cdcbef339fec119c09e64a4ecd8fdaaad74a523924e33b7b103953e6a1aa2",
+      "installMode": "copy"
+    },
+    "animation-performance": {
+      "source": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "sourceType": "github",
+      "skillPath": "skills/animation-performance/SKILL.md",
+      "computedHash": "1ff92f577fc2b7781ed622fd4eb5e514c252cf5cb95c3661743cd127ee01290a",
+      "installMode": "copy"
+    },
+    "astro": {
+      "source": "astrolicious/agent-skills",
+      "commit": "cb4839f3794189ebf35c55d3ba5d3876dff7acf0",
+      "sourceType": "github",
+      "skillPath": "skills/astro/SKILL.md",
+      "computedHash": "125dee2aaf517f986de72356842011af0b1641a13bf8c71f226dee2e41c38fe6",
+      "installMode": "copy"
+    },
+    "astro-best-practices": {
+      "source": "incluud/astro-agent-skills",
+      "commit": "4b4355ecea8ef4f68c9025f3de5a73c27df59310",
+      "sourceType": "github",
+      "skillPath": "skills/astro-best-practices/SKILL.md",
+      "computedHash": "c1985bff9075848cd7670e72f49e72f06a53a24881580c6e2bf9b010b30527a7",
+      "installMode": "copy"
+    },
+    "content-collection": {
+      "source": "incluud/astro-agent-skills",
+      "commit": "4b4355ecea8ef4f68c9025f3de5a73c27df59310",
+      "sourceType": "github",
+      "skillPath": "skills/content-collection/SKILL.md",
+      "computedHash": "487695b59504ec046f3ff3b48992ae079b8b5fa3a8d4c8afb831a3a395eefd3b",
+      "installMode": "copy"
+    },
+    "create-component": {
+      "source": "incluud/astro-agent-skills",
+      "commit": "4b4355ecea8ef4f68c9025f3de5a73c27df59310",
+      "sourceType": "github",
+      "skillPath": "skills/create-component/SKILL.md",
+      "computedHash": "dfaeec3b9170c8d5f9c933113a1b458e7f4d3dcfb97be9f63e4730f70fb3fdda",
+      "installMode": "copy"
+    },
+    "design-taste-frontend": {
+      "source": "Leonxlnx/taste-skill",
+      "commit": "f6b76575f949707b4e3c37cd86cb44b0b98643e8",
+      "sourceType": "github",
+      "skillPath": "skills/taste-skill/SKILL.md",
+      "computedHash": "b10eab0a9684cd09cf34c31ef04a3bf530a5f4404422f9c520d42372d670c7fc",
+      "installMode": "copy"
+    },
+    "docs-lookup": {
+      "source": "incluud/astro-agent-skills",
+      "commit": "4b4355ecea8ef4f68c9025f3de5a73c27df59310",
+      "sourceType": "github",
+      "skillPath": "skills/docs-lookup/SKILL.md",
+      "computedHash": "e9ee5c43cf33cbe6e507890c868e9455ca72516fb1778579c18e4ce1e0d9e564",
+      "installMode": "copy"
+    },
+    "emil-design-eng": {
+      "source": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "sourceType": "github",
+      "skillPath": "skills/emil-design-eng/SKILL.md",
+      "computedHash": "e1b377ccde1d32743d1d3f7d8626629deb8055c9114d180c184697928cc66cc6",
+      "installMode": "copy"
+    },
+    "firecrawl-website-design-clone": {
+      "source": "firecrawl/firecrawl-workflows",
+      "commit": "d2a986240f9d786ae54fc33fcfd9ad37308e9cc3",
+      "sourceType": "github",
+      "skillPath": "skills/firecrawl-website-design-clone/SKILL.md",
+      "computedHash": "d1d7198b5ac5799095814fa3893795a63ce356049ff20d4c9d510959b6c40feb",
+      "installMode": "copy"
+    },
+    "gsap-scrolltrigger": {
+      "source": "greensock/gsap-skills",
+      "commit": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "sourceType": "github",
+      "skillPath": "skills/gsap-scrolltrigger/SKILL.md",
+      "computedHash": "c29c5a0fb1506a7f577fe68282eafc6df14b8d2b8ecd24f1f05836f5a0957b67",
+      "installMode": "copy"
+    },
+    "migrate": {
+      "source": "incluud/astro-agent-skills",
+      "commit": "4b4355ecea8ef4f68c9025f3de5a73c27df59310",
+      "sourceType": "github",
+      "skillPath": "skills/migrate/SKILL.md",
+      "computedHash": "6a1cb4caebd2a6ec0bead45eec2aec455aaff5c34ad94e58d403891e060cb952",
+      "installMode": "copy"
+    },
+    "popular-web-designs": {
+      "source": "NousResearch/hermes-agent",
+      "commit": "514e2cbda616f57d35e7dd9e703d5db20a564bba",
+      "sourceType": "github",
+      "skillPath": "skills/creative/popular-web-designs/SKILL.md",
+      "computedHash": "9450b19fbc3cfc6f35aa7764d0ae47cdc57c4013ef7c091dc49b8ac17669d5a9",
+      "installMode": "copy"
+    },
+    "scroll-experience": {
+      "source": "davila7/claude-code-templates",
+      "commit": "e88848056dc85ded577b3b7368f351344e3536ce",
+      "sourceType": "github",
+      "skillPath": "cli-tool/components/skills/creative-design/scroll-experience/SKILL.md",
+      "computedHash": "1d6dacfa8f4d260c83110aa70d724a680059af180e5c0f0507585abf8cd6a814",
+      "installMode": "copy"
+    },
+    "ui-ux-pro-max": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "commit": "2de1134dc4d1cfe112934611ae5803ae17a1bd7e",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "computedHash": "605686282fb6812d8e3f4b1a06c9fb8ba7be4d7395090f41f221a9ba5a3dbe6b",
+      "installMode": "copy"
+    }
+  }
+}

@@ -1,0 +1,273 @@
+---
+import { Picture } from 'astro:assets';
+import Photo from './Photo.astro';
+import { menu, formatPrice, type PhotoKey } from '../data/menu';
+import moon from '../assets/img/moon-disc.png';
+import sangria from '../assets/img/sangria-moon.jpg';
+import dimSum from '../assets/img/dish-dim-sum.jpg';
+import polloAgridulce from '../assets/img/dish-pollo-agridulce.jpg';
+import costillaSalPimienta from '../assets/img/dish-costilla-sal-pimienta.jpg';
+import sopaHongShao from '../assets/img/dish-sopa-hong-shao.jpg';
+import polloArvejas from '../assets/img/dish-pollo-arvejas.jpg';
+import pancetaCombo from '../assets/img/dish-panceta-combo.jpg';
+
+const photos: Record<PhotoKey, { src: ImageMetadata; alt: string }> = {
+  dimSum: { src: dimSum, alt: 'Shao mai al vapor en canasta de bambú y dumplings fritos con salsa' },
+  polloAgridulce: { src: polloAgridulce, alt: 'Pollo agridulce con cebolla morada y chile verde, con una limonada' },
+  costillaSalPimienta: { src: costillaSalPimienta, alt: 'Costilla a la sal pimienta en plato de pizarra' },
+  sopaHongShao: { src: sopaHongShao, alt: 'Sopa de res Hong Shao con zanahoria, cebollín y huevo frito' },
+  polloArvejas: { src: polloArvejas, alt: 'Pollo salteado con arvejas chinas y chile rojo' },
+  pancetaCombo: { src: pancetaCombo, alt: 'Combo de panceta de cerdo con arroz blanco, pepino y kimchi' },
+};
+const firstPhoto: PhotoKey = 'dimSum';
+---
+
+<section id="menu" aria-labelledby="menu-title" class="section-pad relative isolate overflow-clip bg-ink">
+  <!-- Eco de la carta impresa: la luna gris a medias detrás del texto -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -left-[55vw] top-28 -z-10 w-[110vw] opacity-[0.16] sm:-left-[40vw] lg:-left-[24vw] lg:top-24 lg:w-[min(64rem,72vw)]"
+    data-menu-moon
+  >
+    <Picture
+      src={moon}
+      alt=""
+      widths={[720, 1000]}
+      sizes="(min-width: 1024px) 72vw, 110vw"
+      formats={['avif', 'webp']}
+      fallbackFormat="webp"
+      class="w-full rounded-full grayscale"
+    />
+  </div>
+
+  <div class="wrap">
+    <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+      <h2 id="menu-title" class="text-h2 text-moon" data-reveal>Menú</h2>
+      <p class="max-w-[28rem] text-rose lg:text-right">Fusión asiática. Precios en lempiras; pueden cambiar sin previo aviso.</p>
+    </div>
+
+    <div class="ring-rule mt-8" aria-hidden="true">
+      <img src="/brand/moon-mark-mono.svg" alt="" width="20" height="24" class="h-6 w-auto opacity-80" />
+    </div>
+
+    <!-- Filtro: mejora progresiva (sin JS se ve todo el menú) -->
+    <div
+      role="group"
+      aria-label="Filtrar el menú por categoría"
+      class="-mx-5 mt-9 flex snap-x gap-2 overflow-x-auto px-5 pb-3 pt-1.5 [scrollbar-width:none] sm:-mx-1.5 sm:flex-wrap sm:px-1.5"
+      data-menu-filter
+      hidden
+    >
+      <button type="button" class="menu-chip" data-filter="todo" aria-pressed="true">Todo</button>
+      {
+        menu.map((c) => (
+          <button type="button" class="menu-chip" data-filter={c.id} aria-pressed="false">
+            {c.label}
+          </button>
+        ))
+      }
+    </div>
+    <p class="sr-only" aria-live="polite" data-menu-status></p>
+
+    <div class="mt-12 grid grid-cols-1 gap-x-6 gap-y-12 lg:grid-cols-12">
+      <!-- Lista -->
+      <div class="space-y-16 lg:col-span-7" data-menu-list>
+        {
+          menu.map((cat) => (
+            <section aria-labelledby={`cat-${cat.id}`} data-cat={cat.id} data-cat-photo={cat.photo ?? ''} data-cat-label={cat.label}>
+              <h3 id={`cat-${cat.id}`} class="text-h3 text-champagne">
+                {cat.label}
+              </h3>
+              {cat.intro && <p class="mt-2 max-w-[34rem] text-sm text-rose">{cat.intro}</p>}
+
+              {cat.photo && (
+                <Photo
+                  src={photos[cat.photo].src}
+                  alt={photos[cat.photo].alt}
+                  widths={[480, 800]}
+                  sizes="100vw"
+                  class="mt-6 aspect-[3/2] lg:hidden"
+                  parallax={0.9}
+                />
+              )}
+
+              <ul class="mt-4">
+                {cat.items.map((item) => (
+                  <li
+                    class="menu-row flex items-baseline justify-between gap-6 border-b border-lunar py-4"
+                    data-photo={item.photo ?? ''}
+                    data-name={item.name}
+                    data-price={formatPrice(item.price)}
+                  >
+                    <div class="min-w-0">
+                      <p class="text-[1.0625rem] font-medium text-moon">
+                        {item.name}
+                        {item.house && (
+                          <span class="ml-2 inline-block translate-y-[-1px] rounded-full border border-gold/60 px-2 py-px align-middle text-[0.8125rem] font-normal text-gold">
+                            De la casa
+                          </span>
+                        )}
+                      </p>
+                      {item.note && <p class="mt-0.5 text-sm text-rose">{item.note}</p>}
+                    </div>
+                    <p class:list={['tabular shrink-0 whitespace-nowrap font-display text-[1.125rem]', item.price === null ? 'text-rose' : 'text-champagne']}>
+                      {formatPrice(item.price)}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))
+        }
+      </div>
+
+      <!-- Vista previa (escritorio): cambia con la categoría y al pasar sobre un platillo -->
+      <div class="hidden lg:col-span-5 lg:block">
+        <div class="sticky top-28">
+          <!-- Decorativa: repite visualmente la lista (que ya es el contenido accesible), por eso aria-hidden y alt vacío -->
+          <figure class="relative aspect-[4/5] overflow-hidden bg-night-raised" data-preview aria-hidden="true">
+            {
+              (Object.keys(photos) as PhotoKey[]).map((key) => (
+                <Picture
+                  src={photos[key].src}
+                  alt=""
+                  widths={[480, 720, 960, 1280].filter((w) => w <= photos[key].src.width)}
+                  sizes="(min-width: 1240px) 780px, 62vw"
+                  formats={['avif', 'webp']}
+                  class="preview-photo absolute inset-0 size-full object-cover"
+                  data-preview-photo={key}
+                  data-active={String(key === firstPhoto)}
+                  loading={key === firstPhoto ? 'eager' : 'lazy'}
+                />
+              ))
+            }
+            <!-- Placa tipográfica para platillos sin foto (eco de la carta impresa) -->
+            <div class="preview-plate absolute inset-0 flex flex-col items-center justify-center gap-5 bg-ink p-10 text-center" data-plate data-active="false" aria-hidden="true">
+              <img src="/brand/moon-mark.svg" alt="" width="42" height="50" class="h-12 w-auto" />
+              <p class="font-display text-[2.25rem] leading-tight text-moon" data-plate-name></p>
+              <p class="tabular font-display text-[1.5rem] text-champagne" data-plate-price></p>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <!-- De la barra -->
+    <div class="mt-24 grid grid-cols-1 items-center gap-x-6 gap-y-8 border-t border-lunar pt-16 sm:grid-cols-12">
+      <Photo
+        src={sangria}
+        alt="Copa de Sangría Moon con rodajas de naranja, manzana y una rama de romero"
+        widths={[338]}
+        sizes="(min-width: 1024px) 380px, (min-width: 640px) 40vw, 100vw"
+        class="aspect-[13/9] sm:col-span-5 lg:col-span-4"
+        parallax={1.2}
+      />
+      <div class="sm:col-span-7 lg:col-span-6 lg:col-start-6">
+        <h3 class="text-h3 text-champagne">De la barra</h3>
+        <p class="mt-4 max-w-[34rem] text-moon/90">
+          La Sangría Moon es la bebida de la casa, con fruta y romero. La carta de coctelería de autor está en la barra.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .menu-chip {
+    flex: none;
+    scroll-snap-align: start;
+    min-height: 2.75rem;
+    padding: 0.5rem 1.125rem;
+    border-radius: 9999px;
+    border: 1px solid color-mix(in srgb, var(--color-gold) 32%, transparent);
+    color: var(--color-moon);
+    font-size: 0.9375rem;
+    transition: background-color 180ms var(--ease-moon), color 180ms var(--ease-moon), border-color 180ms var(--ease-moon);
+    cursor: pointer;
+  }
+  .menu-chip[aria-pressed='true'] {
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+    color: var(--color-night);
+  }
+  /* Anillo de foco claro: se distingue también sobre el chip activo (dorado) y no lo recorta el contenedor con scroll */
+  .menu-chip:focus-visible {
+    outline: 2px solid var(--color-moon);
+    outline-offset: 2px;
+  }
+  @media (hover: hover) {
+    .menu-chip[aria-pressed='false']:hover { border-color: var(--color-gold); color: var(--color-gold); }
+    .menu-row:hover p:first-child { color: var(--color-gold); }
+  }
+  .menu-row p:first-child { transition: color 180ms var(--ease-moon); }
+  [data-menu-filter]::-webkit-scrollbar { display: none; }
+
+  /* Cambio de platillo: la nueva foto se "revela" (opacidad + escala 1.04→1), la anterior se va más rápido */
+  .preview-photo,
+  .preview-plate {
+    opacity: 0;
+    transition: opacity 260ms ease, transform 260ms ease;
+  }
+  .preview-photo { transform: scale(1.04); }
+  .preview-photo[data-active='true'],
+  .preview-plate[data-active='true'] {
+    opacity: 1;
+    transform: none;
+    transition: opacity 480ms var(--ease-moon), transform 900ms var(--ease-moon);
+  }
+</style>
+
+<script>
+  const root = document.getElementById('menu')!;
+  const filter = root.querySelector<HTMLElement>('[data-menu-filter]')!;
+  const buttons = [...root.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+  const cats = [...root.querySelectorAll<HTMLElement>('[data-cat]')];
+  const status = root.querySelector<HTMLElement>('[data-menu-status]')!;
+  const photos = [...root.querySelectorAll<HTMLElement>('[data-preview-photo]')];
+  const plate = root.querySelector<HTMLElement>('[data-plate]')!;
+  const plateName = root.querySelector<HTMLElement>('[data-plate-name]')!;
+  const platePrice = root.querySelector<HTMLElement>('[data-plate-price]')!;
+
+  filter.hidden = false;
+
+  function showPhoto(key: string) {
+    photos.forEach((p) => (p.dataset.active = String(p.dataset.previewPhoto === key)));
+    plate.dataset.active = 'false';
+  }
+  function showPlate(name: string, price: string) {
+    plateName.textContent = name;
+    platePrice.textContent = price;
+    photos.forEach((p) => (p.dataset.active = 'false'));
+    plate.dataset.active = 'true';
+  }
+  function showCategory(cat: HTMLElement) {
+    const key = cat.dataset.catPhoto;
+    if (key) showPhoto(key);
+    else showPlate(cat.dataset.catLabel ?? '', '');
+  }
+
+  function apply(id: string) {
+    buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filter === id)));
+    let count = 0;
+    cats.forEach((c) => {
+      const visible = id === 'todo' || c.dataset.cat === id;
+      c.hidden = !visible;
+      if (visible) count += c.querySelectorAll('li').length;
+    });
+    status.textContent = `Mostrando ${count} platillos`;
+    const first = cats.find((c) => !c.hidden);
+    if (id !== 'todo' && first) showCategory(first);
+    else showPhoto('dimSum');
+    // El sistema de movimiento recalcula ScrollTrigger y anima las filas visibles
+    root.dispatchEvent(new CustomEvent('menu:filtered', { bubbles: true }));
+  }
+  buttons.forEach((b) => b.addEventListener('click', () => apply(b.dataset.filter!)));
+
+  root.querySelectorAll<HTMLElement>('.menu-row').forEach((row) => {
+    row.addEventListener('pointerenter', () => {
+      const key = row.dataset.photo;
+      if (key) showPhoto(key);
+      else showPlate(row.dataset.name ?? '', row.dataset.price ?? '');
+    });
+  });
+</script>

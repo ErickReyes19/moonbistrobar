@@ -1,0 +1,44 @@
+---
+// Íconos en build-time: marcas desde simple-icons (CC0) y UI desde lucide-static (ISC).
+import { siInstagram, siFacebook, siTiktok, siWhatsapp } from 'simple-icons';
+import { Phone, MapPin, Mail, Menu, X, ArrowUpRight, Clock } from 'lucide-static';
+
+type BrandName = 'instagram' | 'facebook' | 'tiktok' | 'whatsapp';
+type UiName = 'phone' | 'pin' | 'mail' | 'menu' | 'close' | 'external' | 'clock';
+interface Props {
+  name: BrandName | UiName;
+  class?: string;
+  label?: string;
+}
+
+const { name, class: className = 'size-5', label } = Astro.props;
+
+const brands: Record<BrandName, string> = {
+  instagram: siInstagram.path,
+  facebook: siFacebook.path,
+  tiktok: siTiktok.path,
+  whatsapp: siWhatsapp.path,
+};
+const ui: Record<UiName, string> = {
+  phone: Phone,
+  pin: MapPin,
+  mail: Mail,
+  menu: Menu,
+  close: X,
+  external: ArrowUpRight,
+  clock: Clock,
+};
+
+const a11y = label ? `role="img" aria-label="${label}"` : 'aria-hidden="true" focusable="false"';
+let svg: string;
+if (name in brands) {
+  svg = `<svg viewBox="0 0 24 24" fill="currentColor" class="${className}" ${a11y}><path d="${brands[name as BrandName]}"/></svg>`;
+} else {
+  // lucide-static exporta el SVG completo: reemplazo los atributos de apertura.
+  svg = ui[name as UiName]
+    .replace(/<svg[^>]*>/, `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="${className}" ${a11y}>`)
+    .replace(/<!--.*?-->/gs, '');
+}
+---
+
+<Fragment set:html={svg} />

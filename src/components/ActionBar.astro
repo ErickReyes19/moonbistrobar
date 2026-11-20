@@ -1,0 +1,49 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+---
+
+<!-- Barra de acción en móvil: visible solo entre el hero y la sección Visítanos.
+     En el hero, en Visítanos y en el footer ya están las mismas acciones (evita duplicados y que tape ese contenido). -->
+<nav
+  aria-label="Reservar"
+  id="action-bar"
+  data-visible="true"
+  class="fixed inset-x-0 bottom-0 z-40 border-t border-gold/20 bg-night/95 px-4 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-3 transition-transform duration-300 data-[visible=false]:translate-y-full md:hidden"
+>
+  <div class="grid grid-cols-[minmax(0,1fr)_auto] gap-3">
+    <a href={site.whatsapp.href} class="btn btn-primary min-w-0" rel="noopener" target="_blank">
+      <Icon name="whatsapp" />Reservar<span class="max-[359px]:sr-only">&nbsp;por WhatsApp</span>
+    </a>
+    <a href={site.phone.href} class="btn btn-ghost !px-4" aria-label={`Llamar al ${site.phone.display}`}>
+      <Icon name="phone" />
+    </a>
+  </div>
+</nav>
+
+<script>
+  const bar = document.getElementById('action-bar')!;
+  const hero = document.getElementById('inicio');
+  const visit = document.getElementById('visitanos');
+  let heroVisible = true;
+  let pastVisitStart = false;
+  const update = () => {
+    const visible = !heroVisible && !pastVisitStart;
+    bar.setAttribute('data-visible', String(visible));
+    // Fuera de pantalla no debe recibir el foco del teclado
+    bar.toggleAttribute('inert', !visible);
+  };
+  if (hero) {
+    new IntersectionObserver(([e]) => {
+      heroVisible = e.isIntersecting;
+      update();
+    }, { threshold: 0.15 }).observe(hero);
+  }
+  if (visit) {
+    // Desde que asoma Visítanos hasta el final de la página (incluye el footer)
+    new IntersectionObserver(([e]) => {
+      pastVisitStart = e.isIntersecting || e.boundingClientRect.top < 0;
+      update();
+    }, { threshold: 0 }).observe(visit);
+  }
+</script>

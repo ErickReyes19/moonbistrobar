@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+/* ── Moon Bistro • Bar — tokens (DESIGN.md §3) ─────────────────────────── */
+@theme {
+  /* Color — medidos sobre el logo, el menú y el local (RESTAURANT_DATA.md §2) */
+  --color-night: #101a27;
+  --color-night-deep: #0a121e;
+  --color-night-raised: #182433;
+  --color-ink: #0e0e0e;
+  --color-lunar: #2a2829;
+  --color-gold: #d9b773;
+  --color-gold-shadow: #b7854a;
+  --color-gold-bright: #ebc16f;
+  --color-gold-highlight: #ffde88;
+  --color-champagne: #dfc1a8;
+  --color-rose: #cab9b4;
+  --color-moon: #fdfcfd;
+  --color-terracotta: #cb4b28;
+
+  /* Tipografía */
+  --font-display: "Playfair Display Variable", "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Karla Variable", Karla, ui-sans-serif, system-ui, sans-serif;
+  --font-logo: "Cinzel Variable", Cinzel, Georgia, serif;
+
+  /* Escala 4:3 (Elements of Typographic Style) */
+  --text-display: clamp(2.75rem, 1.6rem + 4.6vw, 5.75rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.015em;
+  --text-h2: clamp(2.25rem, 1.5rem + 3vw, 4.25rem);
+  --text-h2--line-height: 1.05;
+  --text-h2--letter-spacing: -0.01em;
+  --text-h3: clamp(1.375rem, 1.2rem + 0.6vw, 1.75rem);
+  --text-h3--line-height: 1.2;
+  --text-lead: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+  --text-lead--line-height: 1.6;
+  --text-base: 1.0625rem;
+  --text-base--line-height: 1.65;
+  --text-sm: 0.9375rem;
+  --text-sm--line-height: 1.5;
+
+  --ease-moon: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --container-site: 77.5rem; /* 1240px */
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    color-scheme: dark;
+    background-color: var(--color-night);
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5.5rem;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+  /* Con Lenis activo, la suavidad la pone Lenis (rueda y anclas). El scroll nativo, como el que lleva
+     al elemento enfocado con Tab, debe ser instantáneo para que el foco nunca quede fuera de la vista. */
+  html.lenis { scroll-behavior: auto; }
+  body {
+    background-color: var(--color-night);
+    color: var(--color-moon);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+    font-optical-sizing: auto;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-wrap: balance;
+  }
+  p { text-wrap: pretty; }
+  ::selection { background: var(--color-gold); color: var(--color-night); }
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  img { max-width: 100%; height: auto; }
+}
+
+/* ── Componentes compartidos ──────────────────────────────────────────── */
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: var(--container-site);
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 40rem) { .wrap { padding-inline: 2rem; } }
+  @media (min-width: 64rem) { .wrap { padding-inline: 3rem; } }
+
+  .section-pad { padding-block: clamp(6rem, 12vw, 10rem); }
+
+  /* Botones (DESIGN.md §3.4) */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    min-height: 3rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: transform 180ms var(--ease-moon), background-color 180ms var(--ease-moon),
+      border-color 180ms var(--ease-moon), color 180ms var(--ease-moon);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn:active { transform: scale(0.98); }
+  .btn svg { width: 1.125rem; height: 1.125rem; flex: none; }
+  .btn-primary { background: var(--color-gold); color: var(--color-night); }
+  .btn-ghost { border: 1px solid color-mix(in srgb, var(--color-gold) 45%, transparent); color: var(--color-moon); }
+  @media (hover: hover) {
+    .btn-primary:hover { background: var(--color-gold-bright); transform: translateY(-1px); }
+    .btn-ghost:hover { border-color: var(--color-gold); color: var(--color-gold); transform: translateY(-1px); }
+  }
+
+  /* Enlace con subrayado que se dibuja */
+  .link-draw {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 320ms var(--ease-moon), color 180ms var(--ease-moon);
+    padding-bottom: 2px;
+  }
+  @media (hover: hover) { .link-draw:hover { background-size: 100% 1px; } }
+  .link-draw[aria-current="true"] { background-size: 100% 1px; }
+
+  /* Foto dentro de marco: zoom 1.03 al pasar el puntero */
+  .frame { overflow: hidden; position: relative; background: var(--color-night-raised); }
+  .frame picture { display: block; width: 100%; height: 100%; }
+  .frame img { transition: transform 700ms var(--ease-moon); }
+  @media (hover: hover) and (pointer: fine) { .frame:hover img { transform: scale(1.03); } }
+
+  /* Capa interna del parallax: 12% de margen arriba y abajo para que el movimiento nunca muestre bordes */
+  .parallax-inner { position: absolute; inset: -12% 0; }
+
+  .tabular { font-variant-numeric: tabular-nums lining-nums; }
+
+  /* Separador: el anillo lunar del logo como único ornamento */
+  .ring-rule {
+    display: flex; align-items: center; gap: 1rem;
+    color: color-mix(in srgb, var(--color-gold) 55%, transparent);
+  }
+  .ring-rule::before, .ring-rule::after {
+    content: ""; height: 1px; flex: 1; background: currentColor; opacity: 0.5;
+  }
+}
+
+/* ── Fase 4: estados previos a las entradas (solo con movimiento permitido y JS activo) ── */
+html.js-motion:not(.motion-ready) :is([data-reveal], [data-reveal-block], [data-hero-title], [data-hero-enter], [data-hero-moon], [data-hero-stars]) {
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .frame:hover img, .btn:hover { transform: none !important; }
+}

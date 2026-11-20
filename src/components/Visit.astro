@@ -1,0 +1,102 @@
+---
+import Icon from './Icon.astro';
+import { site, formatRange } from '../data/site';
+---
+
+<section id="visitanos" aria-labelledby="visitanos-title" class="section-pad relative isolate overflow-hidden bg-night-deep">
+  <div aria-hidden="true" class="absolute inset-x-0 -top-[15%] -z-10 h-[130%] bg-[url(/brand/stars.svg)] bg-cover bg-center opacity-50" data-stars-layer></div>
+
+  <div class="wrap">
+    <h2 id="visitanos-title" class="text-h2 max-w-[40rem] text-moon" data-reveal>{site.tagline}</h2>
+    <p class="mt-6 max-w-[34rem] text-lead text-champagne">
+      Reserva tu mesa por WhatsApp o llámanos. Se recomienda reservar.
+    </p>
+
+    <!-- Momento tipográfico: la dirección en grande, enlazada al mapa -->
+    <p class="mt-14" data-reveal-block>
+      <a
+        href={site.maps.link}
+        class="link-draw font-display text-[clamp(2rem,1.2rem+3.4vw,4rem)] leading-[1.08] text-gold"
+        rel="noopener"
+        target="_blank"
+      >
+        {site.address.line1}
+      </a>
+    </p>
+    <p class="mt-3 text-lead text-moon/90">{site.address.line2}</p>
+
+    <div class="mt-14 grid grid-cols-1 gap-x-6 gap-y-14 lg:grid-cols-12">
+      <div class="lg:col-span-5">
+        <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap" data-visit-cta>
+          <a href={site.whatsapp.href} class="btn btn-primary" rel="noopener" target="_blank">
+            <Icon name="whatsapp" />Reservar por WhatsApp
+          </a>
+          <a href={site.phone.href} class="btn btn-ghost"><Icon name="phone" />Llamar al {site.phone.display}</a>
+        </div>
+        <p class="mt-5 text-sm text-champagne">
+          O escríbenos a <a href={`mailto:${site.email}`} class="link-draw text-moon">{site.email}</a>
+        </p>
+
+        <h3 class="mt-14 text-h3 text-champagne">Horario</h3>
+        <table class="tabular mt-5 w-full max-w-[26rem] text-left">
+          <caption class="sr-only">Horario de atención de lunes a domingo</caption>
+          <tbody>
+            {
+              site.hours.map((h) => (
+                <tr class="border-b border-gold/15" data-dow={h.dow}>
+                  <th scope="row" class="py-3 pr-6 font-normal text-moon/90">{h.day}</th>
+                  <td class:list={['py-3 text-right', h.open ? 'text-moon' : 'text-rose']}>{formatRange(h)}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div class="map-frame relative aspect-[4/5] overflow-hidden border border-gold/15 bg-night-raised sm:aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[30rem]">
+          <iframe
+            src={site.maps.embed}
+            title="Mapa: Moon Bistro Bar en Barrio Los Andes, San Pedro Sula"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            class="absolute inset-0 size-full border-0"
+          ></iframe>
+        </div>
+        <a
+          href={site.maps.link}
+          class="link-draw mt-4 inline-flex items-center gap-1.5 text-gold"
+          rel="noopener"
+          target="_blank"
+        >
+          Cómo llegar en Google Maps
+          <Icon name="external" class="size-4" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Mapa en tonos de noche, acorde a la paleta */
+  .map-frame iframe {
+    filter: invert(0.92) hue-rotate(180deg) saturate(0.55) brightness(0.9) contrast(0.95);
+  }
+  [data-today] th,
+  [data-today] td {
+    color: var(--color-gold);
+  }
+</style>
+
+<script>
+  import { site } from '../data/site';
+  // Marca el día de hoy (hora de Honduras)
+  const weekday = new Intl.DateTimeFormat('en-US', { timeZone: site.timeZone, weekday: 'short' }).format(new Date());
+  const dow = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(weekday);
+  const row = document.querySelector<HTMLTableRowElement>(`#visitanos tr[data-dow="${dow}"]`);
+  if (row) {
+    row.setAttribute('data-today', '');
+    const th = row.querySelector('th');
+    if (th) th.innerHTML = `${th.textContent} <span class="sr-only">(hoy)</span><span aria-hidden="true"> · hoy</span>`;
+  }
+</script>

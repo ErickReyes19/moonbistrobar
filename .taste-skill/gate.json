@@ -1,0 +1,2628 @@
+{
+ "start": "2026-11-20T19:10:06.327Z",
+ "round": 3,
+ "idle": 0,
+ "errors": 0,
+ "status": "open",
+ "history": [
+  {
+   "at": "2026-11-20T19:13:22.992Z",
+   "mode": "manual",
+   "status": "fail",
+   "fails": 81,
+   "round": 1,
+   "reused": false,
+   "stopHookActive": false
+  },
+  {
+   "at": "2026-11-20T19:13:45.390Z",
+   "mode": "manual",
+   "status": "fail",
+   "fails": 81,
+   "round": 1,
+   "reused": true,
+   "stopHookActive": false
+  },
+  {
+   "at": "2026-11-20T19:18:40.540Z",
+   "mode": "manual",
+   "status": "fail",
+   "fails": 74,
+   "round": 2,
+   "reused": false,
+   "stopHookActive": false
+  },
+  {
+   "at": "2026-11-20T19:22:59.046Z",
+   "mode": "manual",
+   "status": "open",
+   "fails": 70,
+   "round": 3,
+   "reused": false,
+   "stopHookActive": false
+  },
+  {
+   "at": "2026-11-20T19:23:56.368Z",
+   "mode": "hook",
+   "host": "claude",
+   "decision": "allow",
+   "reason": "no build is active here",
+   "stopHookActive": true
+  }
+ ],
+ "max": 3,
+ "marker": {
+  "page": "dist/index.html",
+  "url": null,
+  "root": "dist",
+  "kind": "place",
+  "category": "restaurante y bar de fusión asiática",
+  "primary": "Reservar por WhatsApp",
+  "rounds": 3,
+  "start": "2026-11-20T19:10:06.327Z",
+  "by": "gate.mjs --start"
+ },
+ "manual": true,
+ "roundKey": "17109301c6c214d1:da39a3ee",
+ "roundFree": false,
+ "idleFree": false,
+ "blockKey": null,
+ "fp": "17109301c6c214d1",
+ "page": "dist/index.html",
+ "found": {
+  "fails": [
+   {
+    "check": "nav",
+    "where": "header#site-header > div.wrap.flex > a.shrink-0.rounded-sm \"MOON BISTRO • BAR\"",
+    "msg": "nav link wraps to a second line",
+    "fix": "make the nav one bar from the content's left edge to its right edge, with every link and action inside it",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "nav"
+    ],
+    "wheres": [
+     "header#site-header > div.wrap.flex > a.shrink-0.rounded-sm \"MOON BISTRO • BAR\""
+    ]
+   },
+   {
+    "check": "spill",
+    "where": "section#menu > div.wrap > div.mt-9.flex > button.menu-chip:nth-of-type(6) \"Especiales\"",
+    "msg": "runs 52px past the right edge of the panel it sits on (section#menu > div.pointer-events-none.absolute > picture > img.w-full.rounded-full)",
+    "fix": "keep the box inside the panel it starts on: shrink it, or grow the panel to hold it",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "spill"
+    ],
+    "wheres": [
+     "section#menu > div.wrap > div.mt-9.flex > button.menu-chip:nth-of-type(6) \"Especiales\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#galeria \"Galería Más fotos en Instagram\"",
+    "msg": "starts \"color\" (0.2 s) the moment it is scrolled into view (an IntersectionObserver) on a.link-draw.inline-flex",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#galeria \"Galería Más fotos en Instagram\""
+    ]
+   },
+   {
+    "check": "scroll-reveal",
+    "where": "section#visitanos \"En Moon todo sabe mejor Reserva tu mesa \"",
+    "msg": "starts \"color\" (0.2 s) the moment it is scrolled into view (an IntersectionObserver) on a.link-draw.font-display",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "scroll-reveal"
+    ],
+    "wheres": [
+     "section#visitanos \"En Moon todo sabe mejor Reserva tu mesa \""
+    ]
+   },
+   {
+    "check": "text-only",
+    "where": "section#resenas \"Reseñas\"",
+    "msg": "the quote section is only text: no picture, icon, mock or effect in it",
+    "fix": "give the section a visual: a photograph that fits, the real icons, or a UI fragment on a ground",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "text-only"
+    ],
+    "wheres": [
+     "section#resenas \"Reseñas\""
+    ]
+   },
+   {
+    "check": "copy-fact",
+    "where": "h1#hero-title \"Fusión asiática bajo la luna\"",
+    "msg": "the first screen holds no number, price, date, place, platform or genre",
+    "fix": "put one hard fact from the brief on the first screen: a number, a price, a date, the place, the platforms it runs on or a game's genre; take it from the brief or remove the claim",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "copy-fact"
+    ],
+    "wheres": [
+     "h1#hero-title \"Fusión asiática bajo la luna\""
+    ]
+   },
+   {
+    "check": "copy-headings",
+    "where": "h2#concepto-title \"Oriente se encuentra con la luna\"",
+    "msg": "\"Oriente se encuentra con la luna\" names no product, part, place or section (10 headings like it; at most one brand line per page) (and 9 more like it: \"Entradas y dim sum\", \"Arroces y fideos\", \"Carnes y aves\", \"Mariscos\", ...)",
+    "fix": "name the thing in every heading: the product, a part, the place or a section noun",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "copy-headings"
+    ],
+    "wheres": [
+     "h2#concepto-title \"Oriente se encuentra con la luna\""
+    ]
+   },
+   {
+    "check": "off-grid",
+    "where": "div.wrap.grid > div.relative:nth-of-type(2) > p.mt-7.flex > span:nth-of-type(2) \"Abierto hoy hasta la medianoche\"",
+    "msg": "left edge at 166px, 18px off the page margin at 148px (66 elements, like span.size-2.rounded-full)",
+    "fix": "move it onto the page margin, or the column edge its section uses",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "off-grid"
+    ],
+    "wheres": [
+     "div.wrap.grid > div.relative:nth-of-type(2) > p.mt-7.flex > span:nth-of-type(2) \"Abierto hoy hasta la medianoche\""
+    ]
+   },
+   {
+    "check": "off-grid",
+    "where": "div:nth-of-type(2) > ul.tabular.mt-4 > li.flex.justify-between:nth-of-type(4) > span:nth-of-type(2) \"12:00 p. m. – medianoche\"",
+    "msg": "left edge at 621.5px, 10.5px off a common edge of its section at 632px (3 elements, like span:nth-of-type(2)); 2 more in this section off the grid too (span:nth-of-type(2) at 621.5px, span:nth-of-type(2) at 640.5px)",
+    "fix": "move it onto the page margin, or the column edge its section uses",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "off-grid"
+    ],
+    "wheres": [
+     "div:nth-of-type(2) > ul.tabular.mt-4 > li.flex.justify-between:nth-of-type(4) > span:nth-of-type(2) \"12:00 p. m. – medianoche\""
+    ]
+   },
+   {
+    "check": "tilt",
+    "where": "section#menu > div.pointer-events-none.absolute",
+    "msg": "rotated 19.4°",
+    "fix": "set it straight",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "tilt"
+    ],
+    "wheres": [
+     "section#menu > div.pointer-events-none.absolute"
+    ]
+   },
+   {
+    "check": "section-gaps",
+    "where": "section#galeria / section#resenas",
+    "msg": "315px between these sections, +97% against the median 160px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "section-gaps"
+    ],
+    "wheres": [
+     "section#galeria / section#resenas"
+    ]
+   },
+   {
+    "check": "effect-kind",
+    "where": "(the page)",
+    "msg": "a place page (--type) moves with the scroll: scroll libraries or timelines (Lenis, ScrollTrigger, ScrollSmoother): effects fit tech, gaming and software pages and a product with a technical subject, never a place, shop or service page (house rule)",
+    "fix": "take the scroll-driven motion off: on a place, shop or service page the page scrolls plainly and the parts sit still",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "effect-kind"
+    ],
+    "wheres": [
+     "(the page)"
+    ]
+   },
+   {
+    "check": "street-number",
+    "where": "script[type=\"application/ld+json\"] \"Bo. Los Andes 13 Ave, 6 Calle S\"",
+    "msg": "a streetAddress with a house number in the JSON-LD: \"Bo. Los Andes 13 Ave, 6 Calle S\"; a real door, which the brief does not give",
+    "fix": "print the street and the district only (\"Weserstraße, Berlin-Neukölln\"): no house number, unless the brief gives the address",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "street-number"
+    ],
+    "wheres": [
+     "script[type=\"application/ld+json\"] \"Bo. Los Andes 13 Ave, 6 Calle S\""
+    ]
+   },
+   {
+    "check": "postcode",
+    "where": "script[type=\"application/ld+json\"] \"21101\"",
+    "msg": "a postalCode in the JSON-LD: \"21101\"; with the street it points at one building, which the brief does not give",
+    "fix": "drop the postcode: the street and the district say where it is (copy.md, Address)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "postcode"
+    ],
+    "wheres": [
+     "script[type=\"application/ld+json\"] \"21101\""
+    ]
+   },
+   {
+    "check": "coordinates",
+    "where": "div.wrap.grid > div:nth-of-type(2) > div.mt-10.flex > a.link-draw.inline-flex \"15.5106297,-88.0331523\"",
+    "msg": "a link holds map coordinates, in a link (www.google.com): \"15.5106297,-88.0331523\"; they point at one building on a map (and 2 more like it: again here, div.mt-14.grid > div:nth-of-type(2) > div.map-frame.relative > iframe.absolute.inset-0 in its frame)",
+    "fix": "drop the coordinates: Get directions opens an OpenStreetMap search for the street and the district",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "coordinates"
+    ],
+    "wheres": [
+     "div.wrap.grid > div:nth-of-type(2) > div.mt-10.flex > a.link-draw.inline-flex \"15.5106297,-88.0331523\""
+    ]
+   },
+   {
+    "check": "coordinates",
+    "where": "script[type=\"application/ld+json\"] \"15.5106297\"",
+    "msg": "map coordinates (latitude) in the JSON-LD: \"15.5106297\"; they point at one building on a map (and in the same element: \"-88.0331523\")",
+    "fix": "drop the coordinates: Get directions opens an OpenStreetMap search for the street and the district",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "coordinates"
+    ],
+    "wheres": [
+     "script[type=\"application/ld+json\"] \"15.5106297\""
+    ]
+   },
+   {
+    "check": "phone-number",
+    "where": "div.mt-14.grid > div:nth-of-type(1) > div.flex.flex-col > a.btn.btn-ghost \"9233-0243\"",
+    "msg": "a phone number after its label: \"9233-0243\"; a visitor can dial it and reach a stranger (and 3 more like it: ul.mt-2.text-sm > li:nth-of-type(2) > a.footer-link > span.link-draw, div#mobile-menu > div.wrap.flex > div.mt-10.flex > a.btn.btn-ghost, nav#action-bar > div.grid.gap-3 > a.btn.btn-ghost in its aria-label)",
+    "fix": "drop the number and its tel: link (a \"Request a call\" form may stand in), unless the brief gives the number",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "phone-number"
+    ],
+    "wheres": [
+     "div.mt-14.grid > div:nth-of-type(1) > div.flex.flex-col > a.btn.btn-ghost \"9233-0243\""
+    ]
+   },
+   {
+    "check": "phone-number",
+    "where": "header#site-header > div.wrap.flex > div.flex.items-center > a.btn.btn-primary \"https://wa.me/50492330243?text=Hola%2C%2\"",
+    "msg": "a WhatsApp link calls a number in a real dialable format: \"https://wa.me/50492330243?text=Hola%2C%2\"; a visitor can dial it and reach a stranger (and 10 more like it: div.wrap.grid > div.relative:nth-of-type(2) > div.mt-9.flex > a.btn.btn-primary, div.mt-14.grid > div:nth-of-type(1) > div.flex.flex-col > a.btn.btn-primary, div.mt-14.grid > div:nth-of-type(1) > div.flex.flex-col > a.btn.btn-ghost, ...)",
+    "fix": "drop the number and its tel: link (a \"Request a call\" form may stand in), unless the brief gives the number",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "phone-number"
+    ],
+    "wheres": [
+     "header#site-header > div.wrap.flex > div.flex.items-center > a.btn.btn-primary \"https://wa.me/50492330243?text=Hola%2C%2\""
+    ]
+   },
+   {
+    "check": "section-tile",
+    "where": "section#concepto \"Oriente se encuentra con la luna\"",
+    "msg": "the section is 1184px tall (1.32 screens at 1440x900), not one screen or two: the screen one screen on from its top (scroll 1800px) shows 284px of it and 617px of the next section, its heading \"Menú\" on screen",
+    "fix": "set every section after the hero to one screen or two (height: calc(var(--h,1) * 100vh)) and fit its content above --padb",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "section-tile"
+    ],
+    "wheres": [
+     "section#concepto \"Oriente se encuentra con la luna\""
+    ]
+   },
+   {
+    "check": "focus-visible",
+    "where": "section#menu > div.wrap:nth-of-type(2) > div.mt-9.flex:nth-of-type(3) > button.menu-chip:nth-of-type(1) \"Todo\"",
+    "msg": "Tab stop 11, button \"Todo\": the focus lands on something you cannot see",
+    "fix": "keep the kit's ring (system.css :focus-visible, 2px in --action, there at once); a control that hides itself shows on focus",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "focus-visible"
+    ],
+    "wheres": [
+     "section#menu > div.wrap:nth-of-type(2) > div.mt-9.flex:nth-of-type(3) > button.menu-chip:nth-of-type(1) \"Todo\""
+    ]
+   },
+   {
+    "check": "moment-none",
+    "where": "(the page)",
+    "msg": "a place page (--type) deals no moment: every kind carries one, two on a long page (moments.md)",
+    "fix": "deal one (moments.mjs pick --page place --photo) and mount it in its own section",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "moment-none"
+    ],
+    "wheres": [
+     "(the page)"
+    ]
+   },
+   {
+    "check": "hero-screen",
+    "where": "section#inicio \"Fusión asiática bajo la lunaBistro y bar\"",
+    "msg": "the hero's content is 90px taller than the hero (scrollHeight 990, clientHeight 900): it spills out or scrolls inside it (SR-1)",
+    "fix": "fit the hero's content inside the hero's box: shorten the text or the picture, never let it spill",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "hero-screen"
+    ],
+    "wheres": [
+     "section#inicio \"Fusión asiática bajo la lunaBistro y bar\""
+    ]
+   },
+   {
+    "check": "hero-screen",
+    "where": "section#inicio > div.absolute.inset-x-0",
+    "msg": "the <div> ends at 900px, below the hero's content line at 876px (the 900px screen less 24px) (SR-1)",
+    "fix": "keep the hero's content between the nav and 24px above the fold (and the action bar): shorten the picture or the text; a docked strip 96px at most",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "hero-screen"
+    ],
+    "wheres": [
+     "section#inicio > div.absolute.inset-x-0"
+    ]
+   },
+   {
+    "check": "section-height",
+    "where": "section#menu \"MenúFusión asiática. Precios en lempiras\"",
+    "msg": "the section is 3110px tall (3.5 screens), 1310px over two screens (1800px): every section after the hero is one screen or two, 2px either way (SR-2)",
+    "fix": "set the section to one screen or two (height: calc(var(--h,1) * 100vh), --h 1 or 2) and cut or split its content to fit",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "section-height",
+     "screen-height"
+    ],
+    "wheres": [
+     "section#menu \"MenúFusión asiática. Precios en lempiras\"",
+     "section#menu > div.wrap > div.mt-9.flex \"TodoEntradas y dim sumArroces y fideosCa\"",
+     "#menu section.section-pad.relative \"MenúFusión asiática. Precios en \""
+    ]
+   },
+   {
+    "check": "section-height",
+    "where": "footer.border-t.bg-night-deep \"MOONBISTRO • BARHorarioMartes12:00 p. m.\"",
+    "msg": "the section is 493px tall (0.5 screens), 407px short of one screen (900px): every section after the hero is one screen or two, 2px either way (SR-2)",
+    "fix": "set the section to one screen or two (height: calc(var(--h,1) * 100vh), --h 1 or 2) and cut or split its content to fit",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "section-height"
+    ],
+    "wheres": [
+     "footer.border-t.bg-night-deep \"MOONBISTRO • BARHorarioMartes12:00 p. m.\""
+    ]
+   },
+   {
+    "check": "section-height",
+    "where": "section#visitanos \"En Moon todo sabe mejorReserva tu mesa p\"",
+    "msg": "the section is 1410px tall (1.6 screens), 390px short of two screens (1800px): every section after the hero is one screen or two, 2px either way (and 3 more like it: \"Oriente se encuentra con\", \"GaleríaMás fotos en Inst\", \"Reseñas4.361 reseñas en \") (SR-2)",
+    "fix": "set the section to one screen or two (height: calc(var(--h,1) * 100vh), --h 1 or 2) and cut or split its content to fit",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "section-height",
+     "screen-height"
+    ],
+    "wheres": [
+     "section#visitanos \"En Moon todo sabe mejorReserva tu mesa p\"",
+     "#visitanos section.section-pad.relative \"En Moon todo sabe mejorReserva t\""
+    ]
+   },
+   {
+    "check": "section-height",
+    "where": "section#resenas \"Reseñas4.361 reseñas en Google5 estrella\"",
+    "msg": "the section starts at 6728px, 428px below the screen grid (7 x 900px): sections start on whole screens (and 3 more like it: \"MenúFusión asiática. Pre\", \"GaleríaMás fotos en Inst\", \"MOONBISTRO • BARHorarioM\") (SR-2)",
+    "fix": "make every section above it exactly one or two screens tall, so this one starts on a whole screen",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "section-height",
+     "screen-height"
+    ],
+    "wheres": [
+     "section#resenas \"Reseñas4.361 reseñas en Google5 estrella\"",
+     "#resenas section.section-pad.border-t \"Reseñas4.361 reseñas en Google5 \""
+    ]
+   },
+   {
+    "check": "section-air",
+    "where": "section#menu > div.wrap > div.mt-24.grid \"De la barraLa Sangría Moon es la bebida \"",
+    "msg": "a top border across 92% of the container, between the section's content: sections and their parts are told apart by air and ground, not lines (SR-3)",
+    "fix": "take the rule out: sections and their parts are parted by their ground and the air between them",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "section-air"
+    ],
+    "wheres": [
+     "section#menu > div.wrap > div.mt-24.grid \"De la barraLa Sangría Moon es la bebida \""
+    ]
+   },
+   {
+    "check": "one-section",
+    "where": "section#resenas \"Reseñas4.361 reseñas en Google5 estrella\"",
+    "msg": "the screen at scroll 7200px (stride 8) shows 387px of section 5 and the content of 2 sections, over 24px each beside section 6: a screen shows one section (another may peek 8px, 24px WARN) (SR-4)",
+    "fix": "make each section exactly one screen or two, so a screen shows one section and no neighbour peeks",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "one-section",
+     "neighbour"
+    ],
+    "wheres": [
+     "section#resenas \"Reseñas4.361 reseñas en Google5 estrella\"",
+     "#resenas section.section-pad.border-t \"Reseñas4.361 reseñas en Google5 \""
+    ]
+   },
+   {
+    "check": "one-section",
+    "where": "section#visitanos \"En Moon todo sabe mejorReserva tu mesa p\"",
+    "msg": "the screen at scroll 8671px (the top of section 7) shows 326px of section 6 and the content of 2 sections, over 24px each beside section 7: a screen shows one section (another may peek 8px, 24px WARN) (SR-4)",
+    "fix": "make each section exactly one screen or two, so a screen shows one section and no neighbour peeks",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "one-section",
+     "neighbour"
+    ],
+    "wheres": [
+     "section#visitanos \"En Moon todo sabe mejorReserva tu mesa p\"",
+     "#visitanos section.section-pad.relative \"En Moon todo sabe mejorReserva t\""
+    ]
+   },
+   {
+    "check": "one-section",
+    "where": "section#galeria \"GaleríaMás fotos en Instagram\"",
+    "msg": "the screen at scroll 4500px (stride 5) shows 207px of section 4 and the content of 2 sections, over 24px each beside section 3: a screen shows one section (another may peek 8px, 24px WARN) (and 1 more like it: scroll 1800px) (SR-4)",
+    "fix": "make each section exactly one screen or two, so a screen shows one section and no neighbour peeks",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "one-section",
+     "neighbour"
+    ],
+    "wheres": [
+     "section#galeria \"GaleríaMás fotos en Instagram\"",
+     "#galeria section.section-pad.bg-night \"GaleríaMás fotos en Instagram\""
+    ]
+   },
+   {
+    "check": "one-heading",
+    "where": "footer.border-t.bg-night-deep > div.wrap.grid > div:nth-of-type(3) > h2.font-display.text-champagne \"Contacto\"",
+    "msg": "the section holds 2 h2 headings: one per section, first in its .wrap (SR-5)",
+    "fix": "give each section one h2, first in its .wrap, and the hero only its h1",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "one-heading"
+    ],
+    "wheres": [
+     "footer.border-t.bg-night-deep > div.wrap.grid > div:nth-of-type(3) > h2.font-display.text-champagne \"Contacto\""
+    ]
+   },
+   {
+    "check": "container-edges",
+    "where": "header#site-header \"MOONBISTRO • BARConceptoMenúGaleríaReseñ\"",
+    "msg": "the nav's first box starts at 148px and its last ends at 1292px, not on its .wrap at 100-1340px (SR-6)",
+    "fix": "use one container on every section and the nav (.wrap): one margin left and right, 64-120px on a desktop, 16-24px on a phone",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "container-edges"
+    ],
+    "wheres": [
+     "header#site-header \"MOONBISTRO • BARConceptoMenúGaleríaReseñ\""
+    ]
+   },
+   {
+    "check": "container-edges",
+    "where": "a.sr-only \"Saltar al contenido\"",
+    "msg": "a <a> at the top of the page, outside header.nav, main, footer.closing and nav.actionbar (SR-6)",
+    "fix": "build the page as header.nav, a main of sections (each one in-flow .wrap plus background layers) and footer.closing",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "container-edges"
+    ],
+    "wheres": [
+     "a.sr-only \"Saltar al contenido\""
+    ]
+   },
+   {
+    "check": "container-edges",
+    "where": "section#inicio > div.absolute.inset-x-0",
+    "msg": "the <div> runs 0-1440px, outside the container lines of section 1 at 100-1340px: full width is for background layers and grounds only (SR-6)",
+    "fix": "keep it inside the container lines (.wrap): full width is for background layers and grounds only",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "container-edges"
+    ],
+    "wheres": [
+     "section#inicio > div.absolute.inset-x-0"
+    ]
+   },
+   {
+    "check": "container-edges",
+    "where": "div.hero-moon.pointer-events-none > div.rounded-full > picture.block > img.block.aspect-square \"La luna retroiluminada con cráteres que \"",
+    "msg": "\"La luna retroiluminada con cráte\" runs 803-1440px, outside the container lines of section 1 at 100-1340px: full width is for background layers and grounds only (and 4 more like it: section#visitanos > div.absolute.inset-x-0, section#inicio > div.absolute.inset-x-0, section#inicio > div.wrap.grid > div.hero-moon.pointer-events-none > div.rounded-full) (SR-6)",
+    "fix": "keep it inside the container lines (.wrap): full width is for background layers and grounds only",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "container-edges"
+    ],
+    "wheres": [
+     "div.hero-moon.pointer-events-none > div.rounded-full > picture.block > img.block.aspect-square \"La luna retroiluminada con cráteres que \""
+    ]
+   },
+   {
+    "check": "container-edges",
+    "where": "footer.border-t.bg-night-deep > div.wrap.grid > div:nth-of-type(3) > h2.font-display.text-champagne \"Contacto\"",
+    "msg": "the h2 starts 843px right of the container's left: every h1 and h2 starts on it, 2px either way (SR-6)",
+    "fix": "start the text on the container's left, or on the one split line every split shares",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "container-edges"
+    ],
+    "wheres": [
+     "footer.border-t.bg-night-deep > div.wrap.grid > div:nth-of-type(3) > h2.font-display.text-champagne \"Contacto\""
+    ]
+   },
+   {
+    "check": "container-edges",
+    "where": "div.wrap > div.mt-24.grid > div > h3.text-h3.text-champagne \"De la barra\"",
+    "msg": "6 text blocks start on a left line at x 635, 535px from the container's left: text starts on the container's left, or on one split line (x 627, 732, 837) (also \"La Sangría Moon es la bebida de \", \"“una atención al cliente 1000/10\", \"“una atención al cliente 1000/10\") (and 9 more like it: \"Horario\", x 166, x 148) (SR-6)",
+    "fix": "start the text on the container's left, or on the one split line every split shares",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "container-edges"
+    ],
+    "wheres": [
+     "div.wrap > div.mt-24.grid > div > h3.text-h3.text-champagne \"De la barra\""
+    ]
+   },
+   {
+    "check": "container-edges",
+    "where": "section#inicio > div.wrap.grid > div.hero-moon.pointer-events-none > div.rounded-full",
+    "msg": "a box over half the container wide runs 803-1440px, not on the container's lines at 100-1340px (and 6 more like it: div.wrap > div.mt-14.grid > div:nth-of-type(2) > div.map-frame.relative, section#menu > div.pointer-events-none.absolute > picture > img.w-full.rounded-full, \"13 Avenida, entre 5 y 6 \") (SR-6)",
+    "fix": "run the picture or box from the container's left line to its right line, or put it in a row or a split",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "container-edges"
+    ],
+    "wheres": [
+     "section#inicio > div.wrap.grid > div.hero-moon.pointer-events-none > div.rounded-full"
+    ]
+   },
+   {
+    "check": "row-lines",
+    "where": "section#galeria > div.wrap > div.mt-12.grid",
+    "msg": "a row of 2 items: its first item starts at 148px, the container's left line at 100px; its last item ends at 903px, the container's right line at 1340px (2px either way) (SR-7)",
+    "fix": "start the row's first item on the container's left line and end its last on the right line, every item one height",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "row-lines"
+    ],
+    "wheres": [
+     "section#galeria > div.wrap > div.mt-12.grid"
+    ]
+   },
+   {
+    "check": "row-lines",
+    "where": "footer.border-t.bg-night-deep > div.wrap.grid \"MOONBISTRO • BARHorarioMartes12:00 p. m.\"",
+    "msg": "a row of 3 items: its first item starts at 148px, the container's left line at 100px; its last item ends at 1193px, the container's right line at 1340px (2px either way) (SR-7)",
+    "fix": "start the row's first item on the container's left line and end its last on the right line, every item one height",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "row-lines"
+    ],
+    "wheres": [
+     "footer.border-t.bg-night-deep > div.wrap.grid \"MOONBISTRO • BARHorarioMartes12:00 p. m.\""
+    ]
+   },
+   {
+    "check": "row-lines",
+    "where": "section#inicio > div.absolute.inset-x-0",
+    "msg": "the <div> ends at 1440px, past the container's right line at 1340px (SR-7)",
+    "fix": "end it at the container's right line",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "row-lines"
+    ],
+    "wheres": [
+     "section#inicio > div.absolute.inset-x-0"
+    ]
+   },
+   {
+    "check": "row-lines",
+    "where": "div.hero-moon.pointer-events-none > div.rounded-full > picture.block > img.block.aspect-square \"La luna retroiluminada con cráteres que \"",
+    "msg": "\"La luna retroiluminada con cráte\" ends at 1440px, past the container's right line at 1340px (SR-7)",
+    "fix": "end it at the container's right line",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "row-lines"
+    ],
+    "wheres": [
+     "div.hero-moon.pointer-events-none > div.rounded-full > picture.block > img.block.aspect-square \"La luna retroiluminada con cráteres que \""
+    ]
+   },
+   {
+    "check": "row-lines",
+    "where": "section#visitanos > div.absolute.inset-x-0",
+    "msg": "the <div> ends at 1440px, past the container's right line at 1340px (SR-7)",
+    "fix": "end it at the container's right line",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "row-lines"
+    ],
+    "wheres": [
+     "section#visitanos > div.absolute.inset-x-0"
+    ]
+   },
+   {
+    "check": "split-pair",
+    "where": "section#menu > div.wrap > div.mt-24.grid \"De la barraLa Sangría Moon es la bebida \"",
+    "msg": "the two columns of the split start 74px apart at the top (centred on each other): a split's columns are top-aligned, 8px either way (SR-8)",
+    "fix": "top-align both columns of the split (align-items: start)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "split-pair"
+    ],
+    "wheres": [
+     "section#menu > div.wrap > div.mt-24.grid \"De la barraLa Sangría Moon es la bebida \""
+    ]
+   },
+   {
+    "check": "split-pair",
+    "where": "section#menu > div.wrap > div.mt-12.grid \"Entradas y dim sumWantán fritosCon salsa\"",
+    "msg": "the split's columns are off the page's one pair of lines: its right column starts at x 829, the first split's at 635; its right column starts at x 829, on none of the split lines 627 (k=5), 732 (k=6), 837 (k=7) (SR-8)",
+    "fix": "start every split's right column on one shared line (wrap.left + k x (width + 24) / 12, k 5, 6 or 7; 6 on a place page) and end the left one 24px before it",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "split-pair"
+    ],
+    "wheres": [
+     "section#menu > div.wrap > div.mt-12.grid \"Entradas y dim sumWantán fritosCon salsa\""
+    ]
+   },
+   {
+    "check": "split-pair",
+    "where": "section#concepto > div.wrap.grid \"Oriente se encuentra con la lunaMoon es \"",
+    "msg": "the split's columns are off the page's one pair of lines: its right column starts at x 635, on none of the split lines 627 (k=5), 732 (k=6), 837 (k=7) (SR-8)",
+    "fix": "start every split's right column on one shared line (wrap.left + k x (width + 24) / 12, k 5, 6 or 7; 6 on a place page) and end the left one 24px before it",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "split-pair"
+    ],
+    "wheres": [
+     "section#concepto > div.wrap.grid \"Oriente se encuentra con la lunaMoon es \""
+    ]
+   },
+   {
+    "check": "spill",
+    "where": "section#menu > div.wrap > div.mt-9.flex > button.menu-chip:nth-of-type(2) \"Entradas y dim sum\"",
+    "msg": "runs 24px past the right edge of the panel it sits on (section#menu > div.pointer-events-none.absolute > picture > img.w-full.rounded-full)",
+    "fix": "keep the box inside the panel it starts on: shrink it, or grow the panel to hold it",
+    "widths": [
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "spill"
+    ],
+    "wheres": [
+     "section#menu > div.wrap > div.mt-9.flex > button.menu-chip:nth-of-type(2) \"Entradas y dim sum\""
+    ]
+   },
+   {
+    "check": "spill",
+    "where": "div.mt-12.grid > div.space-y-16 > section:nth-of-type(1) > figure.frame.mt-6",
+    "msg": "runs 50px past the right edge of the panel it sits on (section#menu > div.pointer-events-none.absolute > picture > img.w-full.rounded-full)",
+    "fix": "keep the box inside the panel it starts on: shrink it, or grow the panel to hold it",
+    "widths": [
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "spill"
+    ],
+    "wheres": [
+     "div.mt-12.grid > div.space-y-16 > section:nth-of-type(1) > figure.frame.mt-6"
+    ]
+   },
+   {
+    "check": "row-gap",
+    "where": "section#concepto > div.wrap.grid > div.grid.grid-cols-12 > figure.frame.col-span-7",
+    "msg": "fills 56% of its grid row and leaves 44% of it empty on the left",
+    "fix": "fill the row at this width: span the columns, or stack the split",
+    "widths": [
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "row-gap"
+    ],
+    "wheres": [
+     "section#concepto > div.wrap.grid > div.grid.grid-cols-12 > figure.frame.col-span-7"
+    ]
+   },
+   {
+    "check": "row-gap",
+    "where": "section#galeria > div.wrap > div.mt-12.grid > figure.frame.col-span-2:nth-of-type(7)",
+    "msg": "stretched alone across the last row (350px) while the 2 like it above are 169px",
+    "fix": "fill the row at this width: span the columns, or stack the split",
+    "widths": [
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "row-gap"
+    ],
+    "wheres": [
+     "section#galeria > div.wrap > div.mt-12.grid > figure.frame.col-span-2:nth-of-type(7)"
+    ]
+   },
+   {
+    "check": "off-grid",
+    "where": "section#concepto > div.wrap.grid > div.grid.grid-cols-12 > figure.frame.col-span-7",
+    "msg": "left edge at 172.5px, 16.5px off a common edge of its section at 156px (3 elements)",
+    "fix": "move it onto the page margin, or the column edge its section uses",
+    "widths": [
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "off-grid"
+    ],
+    "wheres": [
+     "section#concepto > div.wrap.grid > div.grid.grid-cols-12 > figure.frame.col-span-7"
+    ]
+   },
+   {
+    "check": "right-edge",
+    "where": "section#inicio > div.wrap.grid > div.hero-moon.pointer-events-none > div.rounded-full",
+    "msg": "its right edge runs 20px past the content's right edge (370px, where 16 boxes end)",
+    "fix": "end it on the content's right edge, like the other blocks of its section",
+    "widths": [
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "right-edge"
+    ],
+    "wheres": [
+     "section#inicio > div.wrap.grid > div.hero-moon.pointer-events-none > div.rounded-full"
+    ]
+   },
+   {
+    "check": "centre-axis",
+    "where": "div.wrap.grid > div:nth-of-type(1) > span.inline-flex.flex-col > span.font-logo.leading-none:nth-of-type(1) \"MOON\"",
+    "msg": "centred text 100px left of the middle of its page (95px against 195px)",
+    "fix": "centre the block on its container (margin-inline: auto), or set it on the left grid",
+    "widths": [
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "centre-axis"
+    ],
+    "wheres": [
+     "div.wrap.grid > div:nth-of-type(1) > span.inline-flex.flex-col > span.font-logo.leading-none:nth-of-type(1) \"MOON\""
+    ]
+   },
+   {
+    "check": "centre-axis",
+    "where": "div.wrap.grid > div:nth-of-type(1) > span.inline-flex.flex-col > span.font-logo.leading-none:nth-of-type(2) \"BISTRO • BAR\"",
+    "msg": "centred text 103px left of the middle of its page (92px against 195px)",
+    "fix": "centre the block on its container (margin-inline: auto), or set it on the left grid",
+    "widths": [
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "centre-axis"
+    ],
+    "wheres": [
+     "div.wrap.grid > div:nth-of-type(1) > span.inline-flex.flex-col > span.font-logo.leading-none:nth-of-type(2) \"BISTRO • BAR\""
+    ]
+   },
+   {
+    "check": "edge-left",
+    "where": "#concepto figure.frame.col-span-7",
+    "msg": "starts at x 1032.1; the lines are 148 and the column starts",
+    "fix": "start it on the .wrap left line",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "layout",
+    "ids": [
+     "edge-left"
+    ],
+    "wheres": [
+     "#concepto figure.frame.col-span-7"
+    ]
+   },
+   {
+    "check": "edge-left",
+    "where": "#menu p.max-w-[28rem].text-rose \"Fusión asiática. Precios en lemp\"",
+    "msg": "starts at x 844; the lines are 148 and the column starts",
+    "fix": "start it on the .wrap left line",
+    "widths": [
+     1440
+    ],
+    "from": "layout",
+    "ids": [
+     "edge-left"
+    ],
+    "wheres": [
+     "#menu p.max-w-[28rem].text-rose \"Fusión asiática. Precios en lemp\""
+    ]
+   },
+   {
+    "check": "spill",
+    "where": "#menu div.-mx-5.mt-9 \"TodoEntradas y dim sumArroces y \"",
+    "msg": "x 142 to 1298, the page runs 148 to 1292",
+    "fix": "keep it inside the .wrap; nothing past the right edge",
+    "widths": [
+     1440
+    ],
+    "from": "layout",
+    "ids": [
+     "spill"
+    ],
+    "wheres": [
+     "#menu div.-mx-5.mt-9 \"TodoEntradas y dim sumArroces y \""
+    ]
+   },
+   {
+    "check": "edge-left",
+    "where": "#resenas p.flex.gap-0.5",
+    "msg": "starts at x 251.1; the lines are 148 and the column starts",
+    "fix": "start it on the .wrap left line",
+    "widths": [
+     1440
+    ],
+    "from": "layout",
+    "ids": [
+     "edge-left"
+    ],
+    "wheres": [
+     "#resenas p.flex.gap-0.5"
+    ]
+   },
+   {
+    "check": "edge-left",
+    "where": "#resenas p.mt-1.text-sm \"61 reseñas en Google\"",
+    "msg": "starts at x 251.1; the lines are 148 and the column starts",
+    "fix": "start it on the .wrap left line",
+    "widths": [
+     1440
+    ],
+    "from": "layout",
+    "ids": [
+     "edge-left"
+    ],
+    "wheres": [
+     "#resenas p.mt-1.text-sm \"61 reseñas en Google\""
+    ]
+   },
+   {
+    "check": "edge-right",
+    "where": "footer.border-t.border-gold/15 div.lg:col-span-4 \"MOONBISTRO • BAR\"",
+    "msg": "ends at x 497.3; the right line is 1292",
+    "fix": "end it on the .wrap right line",
+    "widths": [
+     1440
+    ],
+    "from": "layout",
+    "ids": [
+     "edge-right"
+    ],
+    "wheres": [
+     "footer.border-t.border-gold/15 div.lg:col-span-4 \"MOONBISTRO • BAR\""
+    ]
+   },
+   {
+    "check": "edge-left",
+    "where": "footer.border-t.border-gold/15 div.lg:col-span-3 \"HorarioMartes12:00 p. m. – 10:00\"",
+    "msg": "starts at x 545.3; the lines are 148 and the column starts",
+    "fix": "start it on the .wrap left line",
+    "widths": [
+     1440
+    ],
+    "from": "layout",
+    "ids": [
+     "edge-left"
+    ],
+    "wheres": [
+     "footer.border-t.border-gold/15 div.lg:col-span-3 \"HorarioMartes12:00 p. m. – 10:00\""
+    ]
+   },
+   {
+    "check": "edge-left",
+    "where": "footer.border-t.border-gold/15 div.lg:col-span-3.lg:col-start-9 \"Contacto13 Avenida, entre 5 y 6 \"",
+    "msg": "starts at x 942.7; the lines are 148 and the column starts",
+    "fix": "start it on the .wrap left line",
+    "widths": [
+     1440
+    ],
+    "from": "layout",
+    "ids": [
+     "edge-left"
+    ],
+    "wheres": [
+     "footer.border-t.border-gold/15 div.lg:col-span-3.lg:col-start-9 \"Contacto13 Avenida, entre 5 y 6 \""
+    ]
+   },
+   {
+    "check": "edge-left",
+    "where": "footer.border-t.border-gold/15 p \"© 2026 Moon Bistro Bar. Fotograf\"",
+    "msg": "starts at x 742.2; the lines are 148 and the column starts",
+    "fix": "start it on the .wrap left line",
+    "widths": [
+     1440
+    ],
+    "from": "layout",
+    "ids": [
+     "edge-left"
+    ],
+    "wheres": [
+     "footer.border-t.border-gold/15 p \"© 2026 Moon Bistro Bar. Fotograf\""
+    ]
+   },
+   {
+    "check": "screen-height",
+    "where": "#concepto section.section-pad.bg-night \"Oriente se encuentra con la luna\"",
+    "msg": "1184px, 1.31 screens; a section is exactly one or two (--h)",
+    "fix": "make the section exactly one or two screens (--h: 1 or 2)",
+    "widths": [
+     1440
+    ],
+    "from": "layout",
+    "ids": [
+     "screen-height"
+    ],
+    "wheres": [
+     "#concepto section.section-pad.bg-night \"Oriente se encuentra con la luna\""
+    ]
+   },
+   {
+    "check": "screen-height",
+    "where": "#galeria section.section-pad.bg-night \"GaleríaMás fotos en Instagram\"",
+    "msg": "1535px, 1.71 screens; a section is exactly one or two (--h)",
+    "fix": "make the section exactly one or two screens (--h: 1 or 2)",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "layout",
+    "ids": [
+     "screen-height"
+    ],
+    "wheres": [
+     "#galeria section.section-pad.bg-night \"GaleríaMás fotos en Instagram\""
+    ]
+   },
+   {
+    "check": "bleed-one-side",
+    "where": "#inicio div.hero-moon.pointer-events-none",
+    "msg": "runs from x 206.2 out to the right viewport edge; the left side stays at 20",
+    "fix": "bleed the visual to both edges or keep it on the .wrap lines",
+    "widths": [
+     390
+    ],
+    "from": "layout",
+    "ids": [
+     "bleed-one-side"
+    ],
+    "wheres": [
+     "#inicio div.hero-moon.pointer-events-none"
+    ]
+   },
+   {
+    "check": "edge-right",
+    "where": "#galeria figure.frame.col-span-1",
+    "msg": "ends at x 189; the right line is 370",
+    "fix": "end it on the .wrap right line",
+    "widths": [
+     390
+    ],
+    "from": "layout",
+    "ids": [
+     "edge-right"
+    ],
+    "wheres": [
+     "#galeria figure.frame.col-span-1"
+    ]
+   },
+   {
+    "check": "edge-left",
+    "where": "#galeria figure.frame.col-span-1",
+    "msg": "starts at x 201; the lines are 20 and the column starts",
+    "fix": "start it on the .wrap left line",
+    "widths": [
+     390
+    ],
+    "from": "layout",
+    "ids": [
+     "edge-left"
+    ],
+    "wheres": [
+     "#galeria figure.frame.col-span-1"
+    ]
+   },
+   {
+    "check": "neighbour",
+    "where": "#concepto section.section-pad.bg-night \"Oriente se encuentra con la luna\"",
+    "msg": "framed, 83px of #menu section.section-pad.relative \"MenúFusión asiática. Precios en \" shows",
+    "fix": "keep the next section's heading and picture out of this screen",
+    "widths": [
+     390
+    ],
+    "from": "layout",
+    "ids": [
+     "neighbour"
+    ],
+    "wheres": [
+     "#concepto section.section-pad.bg-night \"Oriente se encuentra con la luna\""
+    ]
+   }
+  ],
+  "warns": [
+   {
+    "check": "pinned",
+    "where": "div.wrap > div.mt-12.grid > div.hidden > div.sticky.top-28",
+    "msg": "held on screen for 1.7 screens of scroll (position: sticky) while the page moves on (a narrow sticky column)",
+    "fix": "let the section scroll with the page",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "card-layout",
+    "where": "section#galeria > div.wrap > div.mt-12.grid",
+    "msg": "7 cards with 1 placement of their UI (vary them: rise, corner, a low stack, right)",
+    "fix": "vary the cards of a group: at least three placements, and the ground in its own light on each",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "copy-buttons",
+    "where": "header#site-header > div.wrap.flex > div.flex.items-center > a.btn.btn-primary \"Reservar\"",
+    "msg": "\"Reservar\" does not start with a verb (book, buy, try, start, get, see...) (and 3 more like it: \"Reservar por WhatsApp\", \"Ver el menú\", \"Llamar al 9233-0243\")",
+    "fix": "label buttons with a verb and what the visitor gets (\"Book a room\", \"Start free trial\")",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "copy-actions",
+    "where": "header#site-header > div.wrap.flex > div.flex.items-center > a.btn.btn-primary \"Reservar\"",
+    "msg": "2 labels for one target /50492330243?text=Hola%2C%20quiero%20reservar%20una%20mesa%20en%20Moon%20Bistro%20Bar.: \"Reservar\", \"Reservar por WhatsApp\"",
+    "fix": "few actions, one wording: at most 2 in the hero, the main action word for word in nav, hero and close",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "centre-axis",
+    "where": "div.wrap.grid > div:nth-of-type(1) > span.inline-flex.flex-col > span.font-logo.leading-none:nth-of-type(1) \"MOON\"",
+    "msg": "centred text 100px left of the middle of its column (223px against 323px)",
+    "fix": "centre the block on its container (margin-inline: auto), or set it on the left grid",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "centre-axis",
+    "where": "div.wrap.grid > div:nth-of-type(1) > span.inline-flex.flex-col > span.font-logo.leading-none:nth-of-type(2) \"BISTRO • BAR\"",
+    "msg": "centred text 102px left of the middle of its column (220px against 323px)",
+    "fix": "centre the block on its container (margin-inline: auto), or set it on the left grid",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
+    "where": "section#visitanos / footer.border-t.bg-night-deep",
+    "msg": "201px between these sections, -37% against the median 320px of gaps at a change of ground",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "photo-set",
+    "where": "figure.frame.col-span-1:nth-of-type(2) > div.parallax-inner > picture > img.size-full.object-cover \"mesa-coctel.C1YuwBs4_1Ick2R.avif\"",
+    "msg": "12 photographs in more than one look: lightness from 0.14 to 0.50; saturation from 0.13 to 0.77; warm and cool photographs mixed (b* -6 to +31); the odd one out is mesa-coctel.C1YuwBs4_1Ick2R.avif",
+    "fix": "grade the photographs to one look (light, colour, warmth), or replace the odd one out",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "nav-family",
+    "where": "header#site-header",
+    "msg": "the nav's links and actions use 2 type families (Cinzel Variable, Karla Variable)",
+    "fix": "keep one nav on every screen: the same bar, fill, links and type",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "nav-labels",
+    "where": "header#site-header > div.wrap.flex > a.shrink-0.rounded-sm \"MOON BISTRO • BAR\"",
+    "msg": "\"MOON BISTRO • BAR\" opens a section headed \"Fusión asiática bajo la luna\"",
+    "fix": "name each nav link after the heading of the section it opens",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "nav-labels",
+    "where": "nav.hidden > ul.flex.items-center > li:nth-of-type(1) > a.link-draw.py-2 \"Concepto\"",
+    "msg": "\"Concepto\" opens a section headed \"Oriente se encuentra con la luna\"",
+    "fix": "name each nav link after the heading of the section it opens",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "nav-labels",
+    "where": "nav.hidden > ul.flex.items-center > li:nth-of-type(5) > a.link-draw.py-2 \"Visítanos\"",
+    "msg": "\"Visítanos\" opens a section headed \"En Moon todo sabe mejor\"",
+    "fix": "name each nav link after the heading of the section it opens",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "nav-labels",
+    "where": "nav > ul.flex.flex-col > li.border-b:nth-of-type(1) > a.flex.min-h-16 \"Concepto\"",
+    "msg": "\"Concepto\" opens a section headed \"Oriente se encuentra con la luna\"",
+    "fix": "name each nav link after the heading of the section it opens",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "nav-labels",
+    "where": "nav > ul.flex.flex-col > li.border-b:nth-of-type(5) > a.flex.min-h-16 \"Visítanos\"",
+    "msg": "\"Visítanos\" opens a section headed \"En Moon todo sabe mejor\"",
+    "fix": "name each nav link after the heading of the section it opens",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "visual-empty",
+    "where": "section#visitanos > div.absolute.inset-x-0 \"background picture stars.svg\"",
+    "msg": "the background picture stars.svg is nearly empty at 1440px: 5 colours in its 1440x1833px, 65.3% one colour (49% of it on screen) (a thin line drawing or a logo can be this plain: look at it)",
+    "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "share-meta",
+    "where": "head",
+    "msg": "the head lacks og:image: a shared link shows no picture or title of its own",
+    "fix": "copy the head block of starter.html: og tags, twitter:card, the icon and theme-color (references/system.md, Head)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "tap-size",
+    "where": "section#galeria > div.wrap > div.flex.flex-col > a.link-draw.inline-flex \"Más fotos en Instagram\"",
+    "msg": "a 184x30px tap target: under the 44px a phone needs",
+    "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box",
+    "widths": [
+     390,
+     320
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "tap-size",
+    "where": "div.wrap.grid > div:nth-of-type(2) > div.mt-10.flex > a.link-draw.inline-flex \"Leer las reseñas en Google\"",
+    "msg": "a 350x30px tap target: under the 44px a phone needs",
+    "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box",
+    "widths": [
+     390,
+     320
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "tap-size",
+    "where": "div.wrap > div.mt-14.grid > div:nth-of-type(2) > a.link-draw.mt-4 \"Cómo llegar en Google Maps\"",
+    "msg": "a 241x30px tap target: under the 44px a phone needs",
+    "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box",
+    "widths": [
+     390,
+     320
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "cta",
+    "where": "section#concepto \"Oriente se encuentra con la luna\"",
+    "msg": "a section over 1.5 screens long with no link or button in it",
+    "fix": "add the action: a button in the hero, one on every priced item, one in the closing section",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
+    "where": "section#inicio / section#concepto",
+    "msg": "uneven space at the edge of a band: 96px outside its edge, 57px inside it (the space on either side of a change of ground reads as one gap only when the two match)",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "photo-set",
+    "where": "div.hero-moon.pointer-events-none > div.rounded-full > picture.block > img.block.aspect-square \"moon-disc.Bkx7el7N_Z2LcGr.avif\"",
+    "msg": "11 photographs in more than one look: saturation from 0.22 to 0.65; warm and cool photographs mixed (b* -9 to +31); the odd one out is moon-disc.Bkx7el7N_Z2LcGr.avif",
+    "fix": "grade the photographs to one look (light, colour, warmth), or replace the odd one out",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "visual-caption",
+    "where": "ul.mt-4 > li.menu-row.flex:nth-of-type(1) > div.min-w-0 > p.text-sm.text-rose \"Con salsa agridulce\"",
+    "msg": "a muted 15px line of 1 row sits 25px under the picture dish-dim-sum.XhZ35kc5_2minGg.avif: it reads as a caption: \"Con salsa agridulce\"; no caption or description under any image, render or visual (house rule)",
+    "fix": "take the line away: no caption or description under, over or on any image, render or visual; a licence credit goes in one footer line",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "visual-caption",
+    "where": "ul.mt-4 > li.menu-row.flex:nth-of-type(1) > div.min-w-0 > p.text-sm.text-rose \"Res estofada, fideos y huevo frito\"",
+    "msg": "a muted 15px line of 1 row sits 25px under the picture dish-sopa-hong-shao.Cm9oeyED_Z1sGtFB.avif: it reads as a caption: \"Res estofada, fideos y huevo frito\"; no caption or description under any image, render or visual (house rule)",
+    "fix": "take the line away: no caption or description under, over or on any image, render or visual; a licence credit goes in one footer line",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "copy-stat-strip",
+    "msg": "stat strip x1",
+    "fix": "a strip only of figures the brief gives (a price, hours, a count); otherwise put each number in the sentence it proves, or leave it out (references/copy-tells.md)",
+    "widths": [],
+    "from": "copy",
+    "where": "copy x1: \"4.3 / 5 / 40 / 4 / 11...\"",
+    "exact": false
+   }
+  ],
+  "crashed": [],
+  "seconds": {
+   "consistency": 170,
+   "layout": 15
+  }
+ },
+ "open": [
+  {
+   "check": "nav",
+   "where": "header#site-header > div.wrap.flex > a.shrink-0.rounded-sm \"MOON BISTRO • BAR\"",
+   "msg": "nav link wraps to a second line",
+   "fix": "make the nav one bar from the content's left edge to its right edge, with every link and action inside it",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "nav"
+   ],
+   "wheres": [
+    "header#site-header > div.wrap.flex > a.shrink-0.rounded-sm \"MOON BISTRO • BAR\""
+   ]
+  },
+  {
+   "check": "spill",
+   "where": "section#menu > div.wrap > div.mt-9.flex > button.menu-chip:nth-of-type(6) \"Especiales\"",
+   "msg": "runs 52px past the right edge of the panel it sits on (section#menu > div.pointer-events-none.absolute > picture > img.w-full.rounded-full)",
+   "fix": "keep the box inside the panel it starts on: shrink it, or grow the panel to hold it",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "spill"
+   ],
+   "wheres": [
+    "section#menu > div.wrap > div.mt-9.flex > button.menu-chip:nth-of-type(6) \"Especiales\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#galeria \"Galería Más fotos en Instagram\"",
+   "msg": "starts \"color\" (0.2 s) the moment it is scrolled into view (an IntersectionObserver) on a.link-draw.inline-flex",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#galeria \"Galería Más fotos en Instagram\""
+   ]
+  },
+  {
+   "check": "scroll-reveal",
+   "where": "section#visitanos \"En Moon todo sabe mejor Reserva tu mesa \"",
+   "msg": "starts \"color\" (0.2 s) the moment it is scrolled into view (an IntersectionObserver) on a.link-draw.font-display",
+   "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "scroll-reveal"
+   ],
+   "wheres": [
+    "section#visitanos \"En Moon todo sabe mejor Reserva tu mesa \""
+   ]
+  },
+  {
+   "check": "text-only",
+   "where": "section#resenas \"Reseñas\"",
+   "msg": "the quote section is only text: no picture, icon, mock or effect in it",
+   "fix": "give the section a visual: a photograph that fits, the real icons, or a UI fragment on a ground",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "text-only"
+   ],
+   "wheres": [
+    "section#resenas \"Reseñas\""
+   ]
+  },
+  {
+   "check": "copy-fact",
+   "where": "h1#hero-title \"Fusión asiática bajo la luna\"",
+   "msg": "the first screen holds no number, price, date, place, platform or genre",
+   "fix": "put one hard fact from the brief on the first screen: a number, a price, a date, the place, the platforms it runs on or a game's genre; take it from the brief or remove the claim",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "copy-fact"
+   ],
+   "wheres": [
+    "h1#hero-title \"Fusión asiática bajo la luna\""
+   ]
+  },
+  {
+   "check": "copy-headings",
+   "where": "h2#concepto-title \"Oriente se encuentra con la luna\"",
+   "msg": "\"Oriente se encuentra con la luna\" names no product, part, place or section (10 headings like it; at most one brand line per page) (and 9 more like it: \"Entradas y dim sum\", \"Arroces y fideos\", \"Carnes y aves\", \"Mariscos\", ...)",
+   "fix": "name the thing in every heading: the product, a part, the place or a section noun",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "copy-headings"
+   ],
+   "wheres": [
+    "h2#concepto-title \"Oriente se encuentra con la luna\""
+   ]
+  },
+  {
+   "check": "off-grid",
+   "where": "div.wrap.grid > div.relative:nth-of-type(2) > p.mt-7.flex > span:nth-of-type(2) \"Abierto hoy hasta la medianoche\"",
+   "msg": "left edge at 166px, 18px off the page margin at 148px (66 elements, like span.size-2.rounded-full)",
+   "fix": "move it onto the page margin, or the column edge its section uses",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "off-grid"
+   ],
+   "wheres": [
+    "div.wrap.grid > div.relative:nth-of-type(2) > p.mt-7.flex > span:nth-of-type(2) \"Abierto hoy hasta la medianoche\""
+   ]
+  },
+  {
+   "check": "off-grid",
+   "where": "div:nth-of-type(2) > ul.tabular.mt-4 > li.flex.justify-between:nth-of-type(4) > span:nth-of-type(2) \"12:00 p. m. – medianoche\"",
+   "msg": "left edge at 621.5px, 10.5px off a common edge of its section at 632px (3 elements, like span:nth-of-type(2)); 2 more in this section off the grid too (span:nth-of-type(2) at 621.5px, span:nth-of-type(2) at 640.5px)",
+   "fix": "move it onto the page margin, or the column edge its section uses",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "off-grid"
+   ],
+   "wheres": [
+    "div:nth-of-type(2) > ul.tabular.mt-4 > li.flex.justify-between:nth-of-type(4) > span:nth-of-type(2) \"12:00 p. m. – medianoche\""
+   ]
+  },
+  {
+   "check": "tilt",
+   "where": "section#menu > div.pointer-events-none.absolute",
+   "msg": "rotated 19.4°",
+   "fix": "set it straight",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "tilt"
+   ],
+   "wheres": [
+    "section#menu > div.pointer-events-none.absolute"
+   ]
+  },
+  {
+   "check": "section-gaps",
+   "where": "section#galeria / section#resenas",
+   "msg": "315px between these sections, +97% against the median 160px",
+   "fix": "use one gap between sections (all within 25% of each other)",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "section-gaps"
+   ],
+   "wheres": [
+    "section#galeria / section#resenas"
+   ]
+  },
+  {
+   "check": "effect-kind",
+   "where": "(the page)",
+   "msg": "a place page (--type) moves with the scroll: scroll libraries or timelines (Lenis, ScrollTrigger, ScrollSmoother): effects fit tech, gaming and software pages and a product with a technical subject, never a place, shop or service page (house rule)",
+   "fix": "take the scroll-driven motion off: on a place, shop or service page the page scrolls plainly and the parts sit still",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "effect-kind"
+   ],
+   "wheres": [
+    "(the page)"
+   ]
+  },
+  {
+   "check": "street-number",
+   "where": "script[type=\"application/ld+json\"] \"Bo. Los Andes 13 Ave, 6 Calle S\"",
+   "msg": "a streetAddress with a house number in the JSON-LD: \"Bo. Los Andes 13 Ave, 6 Calle S\"; a real door, which the brief does not give",
+   "fix": "print the street and the district only (\"Weserstraße, Berlin-Neukölln\"): no house number, unless the brief gives the address",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "street-number"
+   ],
+   "wheres": [
+    "script[type=\"application/ld+json\"] \"Bo. Los Andes 13 Ave, 6 Calle S\""
+   ]
+  },
+  {
+   "check": "postcode",
+   "where": "script[type=\"application/ld+json\"] \"21101\"",
+   "msg": "a postalCode in the JSON-LD: \"21101\"; with the street it points at one building, which the brief does not give",
+   "fix": "drop the postcode: the street and the district say where it is (copy.md, Address)",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "postcode"
+   ],
+   "wheres": [
+    "script[type=\"application/ld+json\"] \"21101\""
+   ]
+  },
+  {
+   "check": "coordinates",
+   "where": "div.wrap.grid > div:nth-of-type(2) > div.mt-10.flex > a.link-draw.inline-flex \"15.5106297,-88.0331523\"",
+   "msg": "a link holds map coordinates, in a link (www.google.com): \"15.5106297,-88.0331523\"; they point at one building on a map (and 2 more like it: again here, div.mt-14.grid > div:nth-of-type(2) > div.map-frame.relative > iframe.absolute.inset-0 in its frame)",
+   "fix": "drop the coordinates: Get directions opens an OpenStreetMap search for the street and the district",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "coordinates"
+   ],
+   "wheres": [
+    "div.wrap.grid > div:nth-of-type(2) > div.mt-10.flex > a.link-draw.inline-flex \"15.5106297,-88.0331523\""
+   ]
+  },
+  {
+   "check": "coordinates",
+   "where": "script[type=\"application/ld+json\"] \"15.5106297\"",
+   "msg": "map coordinates (latitude) in the JSON-LD: \"15.5106297\"; they point at one building on a map (and in the same element: \"-88.0331523\")",
+   "fix": "drop the coordinates: Get directions opens an OpenStreetMap search for the street and the district",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "coordinates"
+   ],
+   "wheres": [
+    "script[type=\"application/ld+json\"] \"15.5106297\""
+   ]
+  },
+  {
+   "check": "phone-number",
+   "where": "div.mt-14.grid > div:nth-of-type(1) > div.flex.flex-col > a.btn.btn-ghost \"9233-0243\"",
+   "msg": "a phone number after its label: \"9233-0243\"; a visitor can dial it and reach a stranger (and 3 more like it: ul.mt-2.text-sm > li:nth-of-type(2) > a.footer-link > span.link-draw, div#mobile-menu > div.wrap.flex > div.mt-10.flex > a.btn.btn-ghost, nav#action-bar > div.grid.gap-3 > a.btn.btn-ghost in its aria-label)",
+   "fix": "drop the number and its tel: link (a \"Request a call\" form may stand in), unless the brief gives the number",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "phone-number"
+   ],
+   "wheres": [
+    "div.mt-14.grid > div:nth-of-type(1) > div.flex.flex-col > a.btn.btn-ghost \"9233-0243\""
+   ]
+  },
+  {
+   "check": "phone-number",
+   "where": "header#site-header > div.wrap.flex > div.flex.items-center > a.btn.btn-primary \"https://wa.me/50492330243?text=Hola%2C%2\"",
+   "msg": "a WhatsApp link calls a number in a real dialable format: \"https://wa.me/50492330243?text=Hola%2C%2\"; a visitor can dial it and reach a stranger (and 10 more like it: div.wrap.grid > div.relative:nth-of-type(2) > div.mt-9.flex > a.btn.btn-primary, div.mt-14.grid > div:nth-of-type(1) > div.flex.flex-col > a.btn.btn-primary, div.mt-14.grid > div:nth-of-type(1) > div.flex.flex-col > a.btn.btn-ghost, ...)",
+   "fix": "drop the number and its tel: link (a \"Request a call\" form may stand in), unless the brief gives the number",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "phone-number"
+   ],
+   "wheres": [
+    "header#site-header > div.wrap.flex > div.flex.items-center > a.btn.btn-primary \"https://wa.me/50492330243?text=Hola%2C%2\""
+   ]
+  },
+  {
+   "check": "section-tile",
+   "where": "section#concepto \"Oriente se encuentra con la luna\"",
+   "msg": "the section is 1184px tall (1.32 screens at 1440x900), not one screen or two: the screen one screen on from its top (scroll 1800px) shows 284px of it and 617px of the next section, its heading \"Menú\" on screen",
+   "fix": "set every section after the hero to one screen or two (height: calc(var(--h,1) * 100vh)) and fit its content above --padb",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "section-tile"
+   ],
+   "wheres": [
+    "section#concepto \"Oriente se encuentra con la luna\""
+   ]
+  },
+  {
+   "check": "focus-visible",
+   "where": "section#menu > div.wrap:nth-of-type(2) > div.mt-9.flex:nth-of-type(3) > button.menu-chip:nth-of-type(1) \"Todo\"",
+   "msg": "Tab stop 11, button \"Todo\": the focus lands on something you cannot see",
+   "fix": "keep the kit's ring (system.css :focus-visible, 2px in --action, there at once); a control that hides itself shows on focus",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "focus-visible"
+   ],
+   "wheres": [
+    "section#menu > div.wrap:nth-of-type(2) > div.mt-9.flex:nth-of-type(3) > button.menu-chip:nth-of-type(1) \"Todo\""
+   ]
+  },
+  {
+   "check": "moment-none",
+   "where": "(the page)",
+   "msg": "a place page (--type) deals no moment: every kind carries one, two on a long page (moments.md)",
+   "fix": "deal one (moments.mjs pick --page place --photo) and mount it in its own section",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "moment-none"
+   ],
+   "wheres": [
+    "(the page)"
+   ]
+  },
+  {
+   "check": "hero-screen",
+   "where": "section#inicio \"Fusión asiática bajo la lunaBistro y bar\"",
+   "msg": "the hero's content is 90px taller than the hero (scrollHeight 990, clientHeight 900): it spills out or scrolls inside it (SR-1)",
+   "fix": "fit the hero's content inside the hero's box: shorten the text or the picture, never let it spill",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "hero-screen"
+   ],
+   "wheres": [
+    "section#inicio \"Fusión asiática bajo la lunaBistro y bar\""
+   ]
+  },
+  {
+   "check": "hero-screen",
+   "where": "section#inicio > div.absolute.inset-x-0",
+   "msg": "the <div> ends at 900px, below the hero's content line at 876px (the 900px screen less 24px) (SR-1)",
+   "fix": "keep the hero's content between the nav and 24px above the fold (and the action bar): shorten the picture or the text; a docked strip 96px at most",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "hero-screen"
+   ],
+   "wheres": [
+    "section#inicio > div.absolute.inset-x-0"
+   ]
+  },
+  {
+   "check": "section-height",
+   "where": "section#menu \"MenúFusión asiática. Precios en lempiras\"",
+   "msg": "the section is 3110px tall (3.5 screens), 1310px over two screens (1800px): every section after the hero is one screen or two, 2px either way (SR-2)",
+   "fix": "set the section to one screen or two (height: calc(var(--h,1) * 100vh), --h 1 or 2) and cut or split its content to fit",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "section-height",
+    "screen-height"
+   ],
+   "wheres": [
+    "section#menu \"MenúFusión asiática. Precios en lempiras\"",
+    "section#menu > div.wrap > div.mt-9.flex \"TodoEntradas y dim sumArroces y fideosCa\"",
+    "#menu section.section-pad.relative \"MenúFusión asiática. Precios en \""
+   ]
+  },
+  {
+   "check": "section-height",
+   "where": "footer.border-t.bg-night-deep \"MOONBISTRO • BARHorarioMartes12:00 p. m.\"",
+   "msg": "the section is 493px tall (0.5 screens), 407px short of one screen (900px): every section after the hero is one screen or two, 2px either way (SR-2)",
+   "fix": "set the section to one screen or two (height: calc(var(--h,1) * 100vh), --h 1 or 2) and cut or split its content to fit",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "section-height"
+   ],
+   "wheres": [
+    "footer.border-t.bg-night-deep \"MOONBISTRO • BARHorarioMartes12:00 p. m.\""
+   ]
+  },
+  {
+   "check": "section-height",
+   "where": "section#visitanos \"En Moon todo sabe mejorReserva tu mesa p\"",
+   "msg": "the section is 1410px tall (1.6 screens), 390px short of two screens (1800px): every section after the hero is one screen or two, 2px either way (and 3 more like it: \"Oriente se encuentra con\", \"GaleríaMás fotos en Inst\", \"Reseñas4.361 reseñas en \") (SR-2)",
+   "fix": "set the section to one screen or two (height: calc(var(--h,1) * 100vh), --h 1 or 2) and cut or split its content to fit",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "section-height",
+    "screen-height"
+   ],
+   "wheres": [
+    "section#visitanos \"En Moon todo sabe mejorReserva tu mesa p\"",
+    "#visitanos section.section-pad.relative \"En Moon todo sabe mejorReserva t\""
+   ]
+  },
+  {
+   "check": "section-height",
+   "where": "section#resenas \"Reseñas4.361 reseñas en Google5 estrella\"",
+   "msg": "the section starts at 6728px, 428px below the screen grid (7 x 900px): sections start on whole screens (and 3 more like it: \"MenúFusión asiática. Pre\", \"GaleríaMás fotos en Inst\", \"MOONBISTRO • BARHorarioM\") (SR-2)",
+   "fix": "make every section above it exactly one or two screens tall, so this one starts on a whole screen",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "section-height",
+    "screen-height"
+   ],
+   "wheres": [
+    "section#resenas \"Reseñas4.361 reseñas en Google5 estrella\"",
+    "#resenas section.section-pad.border-t \"Reseñas4.361 reseñas en Google5 \""
+   ]
+  },
+  {
+   "check": "section-air",
+   "where": "section#menu > div.wrap > div.mt-24.grid \"De la barraLa Sangría Moon es la bebida \"",
+   "msg": "a top border across 92% of the container, between the section's content: sections and their parts are told apart by air and ground, not lines (SR-3)",
+   "fix": "take the rule out: sections and their parts are parted by their ground and the air between them",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "section-air"
+   ],
+   "wheres": [
+    "section#menu > div.wrap > div.mt-24.grid \"De la barraLa Sangría Moon es la bebida \""
+   ]
+  },
+  {
+   "check": "one-section",
+   "where": "section#resenas \"Reseñas4.361 reseñas en Google5 estrella\"",
+   "msg": "the screen at scroll 7200px (stride 8) shows 387px of section 5 and the content of 2 sections, over 24px each beside section 6: a screen shows one section (another may peek 8px, 24px WARN) (SR-4)",
+   "fix": "make each section exactly one screen or two, so a screen shows one section and no neighbour peeks",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "one-section",
+    "neighbour"
+   ],
+   "wheres": [
+    "section#resenas \"Reseñas4.361 reseñas en Google5 estrella\"",
+    "#resenas section.section-pad.border-t \"Reseñas4.361 reseñas en Google5 \""
+   ]
+  },
+  {
+   "check": "one-section",
+   "where": "section#visitanos \"En Moon todo sabe mejorReserva tu mesa p\"",
+   "msg": "the screen at scroll 8671px (the top of section 7) shows 326px of section 6 and the content of 2 sections, over 24px each beside section 7: a screen shows one section (another may peek 8px, 24px WARN) (SR-4)",
+   "fix": "make each section exactly one screen or two, so a screen shows one section and no neighbour peeks",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "one-section",
+    "neighbour"
+   ],
+   "wheres": [
+    "section#visitanos \"En Moon todo sabe mejorReserva tu mesa p\"",
+    "#visitanos section.section-pad.relative \"En Moon todo sabe mejorReserva t\""
+   ]
+  },
+  {
+   "check": "one-section",
+   "where": "section#galeria \"GaleríaMás fotos en Instagram\"",
+   "msg": "the screen at scroll 4500px (stride 5) shows 207px of section 4 and the content of 2 sections, over 24px each beside section 3: a screen shows one section (another may peek 8px, 24px WARN) (and 1 more like it: scroll 1800px) (SR-4)",
+   "fix": "make each section exactly one screen or two, so a screen shows one section and no neighbour peeks",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "one-section",
+    "neighbour"
+   ],
+   "wheres": [
+    "section#galeria \"GaleríaMás fotos en Instagram\"",
+    "#galeria section.section-pad.bg-night \"GaleríaMás fotos en Instagram\""
+   ]
+  },
+  {
+   "check": "one-heading",
+   "where": "footer.border-t.bg-night-deep > div.wrap.grid > div:nth-of-type(3) > h2.font-display.text-champagne \"Contacto\"",
+   "msg": "the section holds 2 h2 headings: one per section, first in its .wrap (SR-5)",
+   "fix": "give each section one h2, first in its .wrap, and the hero only its h1",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "one-heading"
+   ],
+   "wheres": [
+    "footer.border-t.bg-night-deep > div.wrap.grid > div:nth-of-type(3) > h2.font-display.text-champagne \"Contacto\""
+   ]
+  },
+  {
+   "check": "container-edges",
+   "where": "header#site-header \"MOONBISTRO • BARConceptoMenúGaleríaReseñ\"",
+   "msg": "the nav's first box starts at 148px and its last ends at 1292px, not on its .wrap at 100-1340px (SR-6)",
+   "fix": "use one container on every section and the nav (.wrap): one margin left and right, 64-120px on a desktop, 16-24px on a phone",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "container-edges"
+   ],
+   "wheres": [
+    "header#site-header \"MOONBISTRO • BARConceptoMenúGaleríaReseñ\""
+   ]
+  },
+  {
+   "check": "container-edges",
+   "where": "a.sr-only \"Saltar al contenido\"",
+   "msg": "a <a> at the top of the page, outside header.nav, main, footer.closing and nav.actionbar (SR-6)",
+   "fix": "build the page as header.nav, a main of sections (each one in-flow .wrap plus background layers) and footer.closing",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "container-edges"
+   ],
+   "wheres": [
+    "a.sr-only \"Saltar al contenido\""
+   ]
+  },
+  {
+   "check": "container-edges",
+   "where": "section#inicio > div.absolute.inset-x-0",
+   "msg": "the <div> runs 0-1440px, outside the container lines of section 1 at 100-1340px: full width is for background layers and grounds only (SR-6)",
+   "fix": "keep it inside the container lines (.wrap): full width is for background layers and grounds only",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "container-edges"
+   ],
+   "wheres": [
+    "section#inicio > div.absolute.inset-x-0"
+   ]
+  },
+  {
+   "check": "container-edges",
+   "where": "div.hero-moon.pointer-events-none > div.rounded-full > picture.block > img.block.aspect-square \"La luna retroiluminada con cráteres que \"",
+   "msg": "\"La luna retroiluminada con cráte\" runs 803-1440px, outside the container lines of section 1 at 100-1340px: full width is for background layers and grounds only (and 4 more like it: section#visitanos > div.absolute.inset-x-0, section#inicio > div.absolute.inset-x-0, section#inicio > div.wrap.grid > div.hero-moon.pointer-events-none > div.rounded-full) (SR-6)",
+   "fix": "keep it inside the container lines (.wrap): full width is for background layers and grounds only",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "container-edges"
+   ],
+   "wheres": [
+    "div.hero-moon.pointer-events-none > div.rounded-full > picture.block > img.block.aspect-square \"La luna retroiluminada con cráteres que \""
+   ]
+  },
+  {
+   "check": "container-edges",
+   "where": "footer.border-t.bg-night-deep > div.wrap.grid > div:nth-of-type(3) > h2.font-display.text-champagne \"Contacto\"",
+   "msg": "the h2 starts 843px right of the container's left: every h1 and h2 starts on it, 2px either way (SR-6)",
+   "fix": "start the text on the container's left, or on the one split line every split shares",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "container-edges"
+   ],
+   "wheres": [
+    "footer.border-t.bg-night-deep > div.wrap.grid > div:nth-of-type(3) > h2.font-display.text-champagne \"Contacto\""
+   ]
+  },
+  {
+   "check": "container-edges",
+   "where": "div.wrap > div.mt-24.grid > div > h3.text-h3.text-champagne \"De la barra\"",
+   "msg": "6 text blocks start on a left line at x 635, 535px from the container's left: text starts on the container's left, or on one split line (x 627, 732, 837) (also \"La Sangría Moon es la bebida de \", \"“una atención al cliente 1000/10\", \"“una atención al cliente 1000/10\") (and 9 more like it: \"Horario\", x 166, x 148) (SR-6)",
+   "fix": "start the text on the container's left, or on the one split line every split shares",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "container-edges"
+   ],
+   "wheres": [
+    "div.wrap > div.mt-24.grid > div > h3.text-h3.text-champagne \"De la barra\""
+   ]
+  },
+  {
+   "check": "container-edges",
+   "where": "section#inicio > div.wrap.grid > div.hero-moon.pointer-events-none > div.rounded-full",
+   "msg": "a box over half the container wide runs 803-1440px, not on the container's lines at 100-1340px (and 6 more like it: div.wrap > div.mt-14.grid > div:nth-of-type(2) > div.map-frame.relative, section#menu > div.pointer-events-none.absolute > picture > img.w-full.rounded-full, \"13 Avenida, entre 5 y 6 \") (SR-6)",
+   "fix": "run the picture or box from the container's left line to its right line, or put it in a row or a split",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "container-edges"
+   ],
+   "wheres": [
+    "section#inicio > div.wrap.grid > div.hero-moon.pointer-events-none > div.rounded-full"
+   ]
+  },
+  {
+   "check": "row-lines",
+   "where": "section#galeria > div.wrap > div.mt-12.grid",
+   "msg": "a row of 2 items: its first item starts at 148px, the container's left line at 100px; its last item ends at 903px, the container's right line at 1340px (2px either way) (SR-7)",
+   "fix": "start the row's first item on the container's left line and end its last on the right line, every item one height",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "row-lines"
+   ],
+   "wheres": [
+    "section#galeria > div.wrap > div.mt-12.grid"
+   ]
+  },
+  {
+   "check": "row-lines",
+   "where": "footer.border-t.bg-night-deep > div.wrap.grid \"MOONBISTRO • BARHorarioMartes12:00 p. m.\"",
+   "msg": "a row of 3 items: its first item starts at 148px, the container's left line at 100px; its last item ends at 1193px, the container's right line at 1340px (2px either way) (SR-7)",
+   "fix": "start the row's first item on the container's left line and end its last on the right line, every item one height",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "row-lines"
+   ],
+   "wheres": [
+    "footer.border-t.bg-night-deep > div.wrap.grid \"MOONBISTRO • BARHorarioMartes12:00 p. m.\""
+   ]
+  },
+  {
+   "check": "row-lines",
+   "where": "section#inicio > div.absolute.inset-x-0",
+   "msg": "the <div> ends at 1440px, past the container's right line at 1340px (SR-7)",
+   "fix": "end it at the container's right line",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "row-lines"
+   ],
+   "wheres": [
+    "section#inicio > div.absolute.inset-x-0"
+   ]
+  },
+  {
+   "check": "row-lines",
+   "where": "div.hero-moon.pointer-events-none > div.rounded-full > picture.block > img.block.aspect-square \"La luna retroiluminada con cráteres que \"",
+   "msg": "\"La luna retroiluminada con cráte\" ends at 1440px, past the container's right line at 1340px (SR-7)",
+   "fix": "end it at the container's right line",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "row-lines"
+   ],
+   "wheres": [
+    "div.hero-moon.pointer-events-none > div.rounded-full > picture.block > img.block.aspect-square \"La luna retroiluminada con cráteres que \""
+   ]
+  },
+  {
+   "check": "row-lines",
+   "where": "section#visitanos > div.absolute.inset-x-0",
+   "msg": "the <div> ends at 1440px, past the container's right line at 1340px (SR-7)",
+   "fix": "end it at the container's right line",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "row-lines"
+   ],
+   "wheres": [
+    "section#visitanos > div.absolute.inset-x-0"
+   ]
+  },
+  {
+   "check": "split-pair",
+   "where": "section#menu > div.wrap > div.mt-24.grid \"De la barraLa Sangría Moon es la bebida \"",
+   "msg": "the two columns of the split start 74px apart at the top (centred on each other): a split's columns are top-aligned, 8px either way (SR-8)",
+   "fix": "top-align both columns of the split (align-items: start)",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "split-pair"
+   ],
+   "wheres": [
+    "section#menu > div.wrap > div.mt-24.grid \"De la barraLa Sangría Moon es la bebida \""
+   ]
+  },
+  {
+   "check": "split-pair",
+   "where": "section#menu > div.wrap > div.mt-12.grid \"Entradas y dim sumWantán fritosCon salsa\"",
+   "msg": "the split's columns are off the page's one pair of lines: its right column starts at x 829, the first split's at 635; its right column starts at x 829, on none of the split lines 627 (k=5), 732 (k=6), 837 (k=7) (SR-8)",
+   "fix": "start every split's right column on one shared line (wrap.left + k x (width + 24) / 12, k 5, 6 or 7; 6 on a place page) and end the left one 24px before it",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "split-pair"
+   ],
+   "wheres": [
+    "section#menu > div.wrap > div.mt-12.grid \"Entradas y dim sumWantán fritosCon salsa\""
+   ]
+  },
+  {
+   "check": "split-pair",
+   "where": "section#concepto > div.wrap.grid \"Oriente se encuentra con la lunaMoon es \"",
+   "msg": "the split's columns are off the page's one pair of lines: its right column starts at x 635, on none of the split lines 627 (k=5), 732 (k=6), 837 (k=7) (SR-8)",
+   "fix": "start every split's right column on one shared line (wrap.left + k x (width + 24) / 12, k 5, 6 or 7; 6 on a place page) and end the left one 24px before it",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "split-pair"
+   ],
+   "wheres": [
+    "section#concepto > div.wrap.grid \"Oriente se encuentra con la lunaMoon es \""
+   ]
+  },
+  {
+   "check": "spill",
+   "where": "section#menu > div.wrap > div.mt-9.flex > button.menu-chip:nth-of-type(2) \"Entradas y dim sum\"",
+   "msg": "runs 24px past the right edge of the panel it sits on (section#menu > div.pointer-events-none.absolute > picture > img.w-full.rounded-full)",
+   "fix": "keep the box inside the panel it starts on: shrink it, or grow the panel to hold it",
+   "widths": [
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "spill"
+   ],
+   "wheres": [
+    "section#menu > div.wrap > div.mt-9.flex > button.menu-chip:nth-of-type(2) \"Entradas y dim sum\""
+   ]
+  },
+  {
+   "check": "spill",
+   "where": "div.mt-12.grid > div.space-y-16 > section:nth-of-type(1) > figure.frame.mt-6",
+   "msg": "runs 50px past the right edge of the panel it sits on (section#menu > div.pointer-events-none.absolute > picture > img.w-full.rounded-full)",
+   "fix": "keep the box inside the panel it starts on: shrink it, or grow the panel to hold it",
+   "widths": [
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "spill"
+   ],
+   "wheres": [
+    "div.mt-12.grid > div.space-y-16 > section:nth-of-type(1) > figure.frame.mt-6"
+   ]
+  },
+  {
+   "check": "row-gap",
+   "where": "section#concepto > div.wrap.grid > div.grid.grid-cols-12 > figure.frame.col-span-7",
+   "msg": "fills 56% of its grid row and leaves 44% of it empty on the left",
+   "fix": "fill the row at this width: span the columns, or stack the split",
+   "widths": [
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "row-gap"
+   ],
+   "wheres": [
+    "section#concepto > div.wrap.grid > div.grid.grid-cols-12 > figure.frame.col-span-7"
+   ]
+  },
+  {
+   "check": "row-gap",
+   "where": "section#galeria > div.wrap > div.mt-12.grid > figure.frame.col-span-2:nth-of-type(7)",
+   "msg": "stretched alone across the last row (350px) while the 2 like it above are 169px",
+   "fix": "fill the row at this width: span the columns, or stack the split",
+   "widths": [
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "row-gap"
+   ],
+   "wheres": [
+    "section#galeria > div.wrap > div.mt-12.grid > figure.frame.col-span-2:nth-of-type(7)"
+   ]
+  },
+  {
+   "check": "off-grid",
+   "where": "section#concepto > div.wrap.grid > div.grid.grid-cols-12 > figure.frame.col-span-7",
+   "msg": "left edge at 172.5px, 16.5px off a common edge of its section at 156px (3 elements)",
+   "fix": "move it onto the page margin, or the column edge its section uses",
+   "widths": [
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "off-grid"
+   ],
+   "wheres": [
+    "section#concepto > div.wrap.grid > div.grid.grid-cols-12 > figure.frame.col-span-7"
+   ]
+  },
+  {
+   "check": "right-edge",
+   "where": "section#inicio > div.wrap.grid > div.hero-moon.pointer-events-none > div.rounded-full",
+   "msg": "its right edge runs 20px past the content's right edge (370px, where 16 boxes end)",
+   "fix": "end it on the content's right edge, like the other blocks of its section",
+   "widths": [
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "right-edge"
+   ],
+   "wheres": [
+    "section#inicio > div.wrap.grid > div.hero-moon.pointer-events-none > div.rounded-full"
+   ]
+  },
+  {
+   "check": "centre-axis",
+   "where": "div.wrap.grid > div:nth-of-type(1) > span.inline-flex.flex-col > span.font-logo.leading-none:nth-of-type(1) \"MOON\"",
+   "msg": "centred text 100px left of the middle of its page (95px against 195px)",
+   "fix": "centre the block on its container (margin-inline: auto), or set it on the left grid",
+   "widths": [
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "centre-axis"
+   ],
+   "wheres": [
+    "div.wrap.grid > div:nth-of-type(1) > span.inline-flex.flex-col > span.font-logo.leading-none:nth-of-type(1) \"MOON\""
+   ]
+  },
+  {
+   "check": "centre-axis",
+   "where": "div.wrap.grid > div:nth-of-type(1) > span.inline-flex.flex-col > span.font-logo.leading-none:nth-of-type(2) \"BISTRO • BAR\"",
+   "msg": "centred text 103px left of the middle of its page (92px against 195px)",
+   "fix": "centre the block on its container (margin-inline: auto), or set it on the left grid",
+   "widths": [
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "centre-axis"
+   ],
+   "wheres": [
+    "div.wrap.grid > div:nth-of-type(1) > span.inline-flex.flex-col > span.font-logo.leading-none:nth-of-type(2) \"BISTRO • BAR\""
+   ]
+  },
+  {
+   "check": "edge-left",
+   "where": "#concepto figure.frame.col-span-7",
+   "msg": "starts at x 1032.1; the lines are 148 and the column starts",
+   "fix": "start it on the .wrap left line",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "layout",
+   "ids": [
+    "edge-left"
+   ],
+   "wheres": [
+    "#concepto figure.frame.col-span-7"
+   ]
+  },
+  {
+   "check": "edge-left",
+   "where": "#menu p.max-w-[28rem].text-rose \"Fusión asiática. Precios en lemp\"",
+   "msg": "starts at x 844; the lines are 148 and the column starts",
+   "fix": "start it on the .wrap left line",
+   "widths": [
+    1440
+   ],
+   "from": "layout",
+   "ids": [
+    "edge-left"
+   ],
+   "wheres": [
+    "#menu p.max-w-[28rem].text-rose \"Fusión asiática. Precios en lemp\""
+   ]
+  },
+  {
+   "check": "spill",
+   "where": "#menu div.-mx-5.mt-9 \"TodoEntradas y dim sumArroces y \"",
+   "msg": "x 142 to 1298, the page runs 148 to 1292",
+   "fix": "keep it inside the .wrap; nothing past the right edge",
+   "widths": [
+    1440
+   ],
+   "from": "layout",
+   "ids": [
+    "spill"
+   ],
+   "wheres": [
+    "#menu div.-mx-5.mt-9 \"TodoEntradas y dim sumArroces y \""
+   ]
+  },
+  {
+   "check": "edge-left",
+   "where": "#resenas p.flex.gap-0.5",
+   "msg": "starts at x 251.1; the lines are 148 and the column starts",
+   "fix": "start it on the .wrap left line",
+   "widths": [
+    1440
+   ],
+   "from": "layout",
+   "ids": [
+    "edge-left"
+   ],
+   "wheres": [
+    "#resenas p.flex.gap-0.5"
+   ]
+  },
+  {
+   "check": "edge-left",
+   "where": "#resenas p.mt-1.text-sm \"61 reseñas en Google\"",
+   "msg": "starts at x 251.1; the lines are 148 and the column starts",
+   "fix": "start it on the .wrap left line",
+   "widths": [
+    1440
+   ],
+   "from": "layout",
+   "ids": [
+    "edge-left"
+   ],
+   "wheres": [
+    "#resenas p.mt-1.text-sm \"61 reseñas en Google\""
+   ]
+  },
+  {
+   "check": "edge-right",
+   "where": "footer.border-t.border-gold/15 div.lg:col-span-4 \"MOONBISTRO • BAR\"",
+   "msg": "ends at x 497.3; the right line is 1292",
+   "fix": "end it on the .wrap right line",
+   "widths": [
+    1440
+   ],
+   "from": "layout",
+   "ids": [
+    "edge-right"
+   ],
+   "wheres": [
+    "footer.border-t.border-gold/15 div.lg:col-span-4 \"MOONBISTRO • BAR\""
+   ]
+  },
+  {
+   "check": "edge-left",
+   "where": "footer.border-t.border-gold/15 div.lg:col-span-3 \"HorarioMartes12:00 p. m. – 10:00\"",
+   "msg": "starts at x 545.3; the lines are 148 and the column starts",
+   "fix": "start it on the .wrap left line",
+   "widths": [
+    1440
+   ],
+   "from": "layout",
+   "ids": [
+    "edge-left"
+   ],
+   "wheres": [
+    "footer.border-t.border-gold/15 div.lg:col-span-3 \"HorarioMartes12:00 p. m. – 10:00\""
+   ]
+  },
+  {
+   "check": "edge-left",
+   "where": "footer.border-t.border-gold/15 div.lg:col-span-3.lg:col-start-9 \"Contacto13 Avenida, entre 5 y 6 \"",
+   "msg": "starts at x 942.7; the lines are 148 and the column starts",
+   "fix": "start it on the .wrap left line",
+   "widths": [
+    1440
+   ],
+   "from": "layout",
+   "ids": [
+    "edge-left"
+   ],
+   "wheres": [
+    "footer.border-t.border-gold/15 div.lg:col-span-3.lg:col-start-9 \"Contacto13 Avenida, entre 5 y 6 \""
+   ]
+  },
+  {
+   "check": "edge-left",
+   "where": "footer.border-t.border-gold/15 p \"© 2026 Moon Bistro Bar. Fotograf\"",
+   "msg": "starts at x 742.2; the lines are 148 and the column starts",
+   "fix": "start it on the .wrap left line",
+   "widths": [
+    1440
+   ],
+   "from": "layout",
+   "ids": [
+    "edge-left"
+   ],
+   "wheres": [
+    "footer.border-t.border-gold/15 p \"© 2026 Moon Bistro Bar. Fotograf\""
+   ]
+  },
+  {
+   "check": "screen-height",
+   "where": "#concepto section.section-pad.bg-night \"Oriente se encuentra con la luna\"",
+   "msg": "1184px, 1.31 screens; a section is exactly one or two (--h)",
+   "fix": "make the section exactly one or two screens (--h: 1 or 2)",
+   "widths": [
+    1440
+   ],
+   "from": "layout",
+   "ids": [
+    "screen-height"
+   ],
+   "wheres": [
+    "#concepto section.section-pad.bg-night \"Oriente se encuentra con la luna\""
+   ]
+  },
+  {
+   "check": "screen-height",
+   "where": "#galeria section.section-pad.bg-night \"GaleríaMás fotos en Instagram\"",
+   "msg": "1535px, 1.71 screens; a section is exactly one or two (--h)",
+   "fix": "make the section exactly one or two screens (--h: 1 or 2)",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "layout",
+   "ids": [
+    "screen-height"
+   ],
+   "wheres": [
+    "#galeria section.section-pad.bg-night \"GaleríaMás fotos en Instagram\""
+   ]
+  },
+  {
+   "check": "bleed-one-side",
+   "where": "#inicio div.hero-moon.pointer-events-none",
+   "msg": "runs from x 206.2 out to the right viewport edge; the left side stays at 20",
+   "fix": "bleed the visual to both edges or keep it on the .wrap lines",
+   "widths": [
+    390
+   ],
+   "from": "layout",
+   "ids": [
+    "bleed-one-side"
+   ],
+   "wheres": [
+    "#inicio div.hero-moon.pointer-events-none"
+   ]
+  },
+  {
+   "check": "edge-right",
+   "where": "#galeria figure.frame.col-span-1",
+   "msg": "ends at x 189; the right line is 370",
+   "fix": "end it on the .wrap right line",
+   "widths": [
+    390
+   ],
+   "from": "layout",
+   "ids": [
+    "edge-right"
+   ],
+   "wheres": [
+    "#galeria figure.frame.col-span-1"
+   ]
+  },
+  {
+   "check": "edge-left",
+   "where": "#galeria figure.frame.col-span-1",
+   "msg": "starts at x 201; the lines are 20 and the column starts",
+   "fix": "start it on the .wrap left line",
+   "widths": [
+    390
+   ],
+   "from": "layout",
+   "ids": [
+    "edge-left"
+   ],
+   "wheres": [
+    "#galeria figure.frame.col-span-1"
+   ]
+  },
+  {
+   "check": "neighbour",
+   "where": "#concepto section.section-pad.bg-night \"Oriente se encuentra con la luna\"",
+   "msg": "framed, 83px of #menu section.section-pad.relative \"MenúFusión asiática. Precios en \" shows",
+   "fix": "keep the next section's heading and picture out of this screen",
+   "widths": [
+    390
+   ],
+   "from": "layout",
+   "ids": [
+    "neighbour"
+   ],
+   "wheres": [
+    "#concepto section.section-pad.bg-night \"Oriente se encuentra con la luna\""
+   ]
+  }
+ ],
+ "waived": [],
+ "warnCount": 25,
+ "at": "2026-11-20T19:22:59.048Z",
+ "openTold": true
+}

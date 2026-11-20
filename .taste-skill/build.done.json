@@ -1,0 +1,11 @@
+{
+ "page": "dist/index.html",
+ "url": null,
+ "root": "dist",
+ "kind": "place",
+ "category": "restaurante y bar de fusión asiática",
+ "primary": "Reservar por WhatsApp",
+ "rounds": 3,
+ "start": "2026-11-20T19:10:06.327Z",
+ "by": "gate.mjs --start"
+}

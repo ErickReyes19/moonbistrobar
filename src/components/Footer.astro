@@ -1,0 +1,90 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { site, navLinks, formatRange } from '../data/site';
+
+const socials = [
+  { name: 'instagram' as const, label: 'Instagram', ...site.social.instagram },
+  { name: 'facebook' as const, label: 'Facebook', ...site.social.facebook },
+  { name: 'tiktok' as const, label: 'TikTok', ...site.social.tiktok },
+];
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-gold/15 bg-night-deep">
+  <div class="wrap grid grid-cols-1 gap-12 py-20 sm:grid-cols-2 lg:grid-cols-12">
+    <div class="lg:col-span-4">
+      <Logo variant="stacked" />
+      <ul class="mt-8 flex gap-3">
+        {
+          socials.map((s) => (
+            <li>
+              <a
+                href={s.href}
+                class="inline-flex size-11 items-center justify-center rounded-full border border-gold/35 text-champagne transition-colors hover:border-gold hover:text-gold"
+                rel="noopener"
+                target="_blank"
+                aria-label={`${s.label}: ${s.handle}`}
+              >
+                <Icon name={s.name} class="size-[1.125rem]" />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="lg:col-span-3">
+      <h2 class="font-display text-[1.25rem] text-champagne">Horario</h2>
+      <ul class="tabular mt-4 space-y-1.5 text-sm text-moon/85">
+        {
+          site.hours.map((h) => (
+            <li class="flex justify-between gap-4">
+              <span>{h.day}</span>
+              <span class:list={[!h.open && 'text-rose']}>{formatRange(h)}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="lg:col-span-3 lg:col-start-9">
+      <h2 class="font-display text-[1.25rem] text-champagne">Contacto</h2>
+      <!-- En táctil cada enlace mide 44px de alto (área de toque); en escritorio vuelve a ser compacto -->
+      <ul class="mt-2 text-sm lg:mt-4 lg:space-y-3">
+        <li>
+          <a href={site.maps.link} class="footer-link" rel="noopener" target="_blank">
+            <span class="link-draw">{site.address.line1}<br />{site.address.line2}</span>
+          </a>
+        </li>
+        <li><a href={site.phone.href} class="footer-link"><span class="link-draw">{site.phone.display}</span></a></li>
+        <li><a href={site.whatsapp.href} class="footer-link" rel="noopener" target="_blank"><span class="link-draw">WhatsApp</span></a></li>
+        <li><a href={`mailto:${site.email}`} class="footer-link"><span class="link-draw">{site.email}</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="wrap flex flex-col gap-4 border-t border-gold/10 py-8 text-sm text-rose lg:flex-row lg:items-center lg:justify-between">
+    <nav aria-label="Pie de página">
+      <ul class="flex flex-wrap gap-x-6">
+        {navLinks.map((l) => <li><a href={l.href} class="footer-link"><span class="link-draw">{l.label}</span></a></li>)}
+      </ul>
+    </nav>
+    <p>© {year} {site.legalName}. Fotografías: Moon Bistro Bar y usuarios de Google Maps.</p>
+  </div>
+</footer>
+
+<style>
+  .footer-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    color: color-mix(in srgb, var(--color-moon) 90%, transparent);
+  }
+  @media (hover: hover) {
+    .footer-link:hover .link-draw { background-size: 100% 1px; }
+  }
+  @media (min-width: 64rem) {
+    .footer-link { min-height: 0; }
+  }
+</style>

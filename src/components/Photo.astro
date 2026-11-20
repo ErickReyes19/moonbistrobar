@@ -1,0 +1,32 @@
+---
+// Foto en marco: <Picture> (AVIF + WebP) y, opcionalmente, una capa interna para el parallax.
+// El zoom al pasar el puntero actúa sobre <img>; el parallax mueve la capa interna,
+// así los dos transforms no compiten (DESIGN.md §3.4, Fase 4).
+import { Picture } from 'astro:assets';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  widths: number[];
+  sizes: string;
+  /** Clases del <figure> (tamaño, columnas, proporción) */
+  class?: string;
+  /** Velocidad relativa de parallax (0.4 = fondo lento, 1.6 = primer plano). Omitir = sin parallax */
+  parallax?: number;
+  loading?: 'lazy' | 'eager';
+}
+
+const { src, alt, widths, sizes, class: className, parallax, loading = 'lazy' } = Astro.props;
+---
+
+<figure class:list={['frame', className]} data-parallax={parallax ? '' : undefined} data-speed={parallax}>
+  {
+    parallax ? (
+      <div class="parallax-inner" data-parallax-inner>
+        <Picture src={src} alt={alt} widths={widths} sizes={sizes} formats={['avif', 'webp']} loading={loading} class="size-full object-cover" />
+      </div>
+    ) : (
+      <Picture src={src} alt={alt} widths={widths} sizes={sizes} formats={['avif', 'webp']} loading={loading} class="size-full object-cover" />
+    )
+  }
+</figure>

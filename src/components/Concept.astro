@@ -1,0 +1,60 @@
+---
+import Photo from './Photo.astro';
+import salon from '../assets/img/salon-principal.jpg';
+import jardin from '../assets/img/jardin-vertical.jpg';
+
+const facts = [
+  { term: 'Cocina', detail: 'Fusión asiática: dim sum, wok, arroces, mariscos y langosta a la sal pimienta.' },
+  { term: 'Barra', detail: 'La Sangría Moon y coctelería de autor.' },
+  { term: 'Espacios', detail: 'Salón bajo un cielo de estrellas y terraza con fuente.' },
+];
+---
+
+<section id="concepto" aria-labelledby="concepto-title" class="section-pad bg-night">
+  <div class="wrap grid grid-cols-1 gap-x-6 gap-y-14 lg:grid-cols-12">
+    <div class="lg:col-span-5">
+      <h2 id="concepto-title" class="text-h2 text-moon" data-reveal>Oriente se encuentra con la luna</h2>
+      <div class="mt-8 max-w-[34rem] space-y-5 text-champagne">
+        <p>
+          Moon es un bistro y bar de fusión asiática en Barrio Los Andes. La cocina va del shao mai al vapor y el arroz
+          frito de la casa hasta el camarón estilo Moon, y la barra sirve la sangría que lleva su nombre.
+        </p>
+        <p>
+          El salón tiene techo de cielo profundo, sillones de terciopelo rosa y cabinas verde esmeralda. En la pared
+          está la luna: retroiluminada, con sus cráteres, y casi todos los que llegan se toman una foto con ella.
+        </p>
+      </div>
+
+      <dl class="mt-12 max-w-[34rem] border-t border-gold/20">
+        {
+          facts.map((f) => (
+            <div class="grid grid-cols-[7.5rem_1fr] gap-4 border-b border-gold/20 py-4">
+              <dt class="font-display text-[1.125rem] text-gold">{f.term}</dt>
+              <dd class="text-moon/90">{f.detail}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+
+    <div class="grid grid-cols-12 gap-4 sm:gap-6 lg:col-span-7">
+      <!-- Dos profundidades: el salón (plano medio) y el jardín (primer plano, más rápido) -->
+      <Photo
+        src={salon}
+        alt="Salón principal de Moon con mural espacial en el techo, sillones de terciopelo rosa y cabinas verde esmeralda"
+        widths={[640, 960, 1280]}
+        sizes="(min-width: 1024px) 58vw, 100vw"
+        class="col-span-12 aspect-[4/3]"
+        parallax={0.8}
+      />
+      <Photo
+        src={jardin}
+        alt="Jardín vertical tropical bajo el techo de estrellas, con un cuadro iluminado"
+        widths={[320, 576]}
+        sizes="(min-width: 1024px) 24vw, 50vw"
+        class="col-span-7 col-start-6 aspect-[3/4] sm:col-span-5 sm:col-start-8"
+        parallax={1.6}
+      />
+    </div>
+  </div>
+</section>

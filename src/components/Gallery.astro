@@ -1,0 +1,43 @@
+---
+import Photo from './Photo.astro';
+import terraza from '../assets/img/terraza-noche.jpg';
+import mesa from '../assets/img/mesa-coctel.jpg';
+import bar from '../assets/img/bar-cocteles.jpg';
+import pantalla from '../assets/img/salon-pantalla.jpg';
+import logoEntrada from '../assets/img/logo-entrada.jpg';
+import gobo from '../assets/img/gobo-logo.jpg';
+import entrada from '../assets/img/entrada-dia.jpg';
+
+// Mosaico asimétrico: el tamaño sigue la calidad de cada foto (las de Instagram son de 360px).
+// `speed` alterna profundidades para un parallax multicapa dentro de cada marco.
+const shots = [
+  // `sizes` contempla el recorte object-cover de marcos altos más el 24% extra de la capa de parallax.
+  { src: terraza, alt: 'Terraza de noche con fuente central, plantas y luces rosadas', cls: 'col-span-2 row-span-2 lg:col-span-4 lg:row-span-2', sizes: '(min-width: 1024px) 66vw, 150vw', widths: [640, 960, 1280], speed: 0.7 },
+  { src: mesa, alt: 'Mesa con lámpara de luz ámbar, un cóctel naranja y totopos frente a la barra', cls: 'col-span-1 row-span-2 lg:col-span-2 lg:row-span-3', sizes: '(min-width: 1024px) 42vw, 85vw', widths: [400, 640, 900], speed: 1.4 },
+  { src: bar, alt: 'Bartender sirviendo un cóctel naranja con granadina en la barra de mármol oscuro', cls: 'col-span-1 row-span-1 lg:col-span-2 lg:row-span-1', sizes: '(min-width: 1024px) 33vw, 80vw', widths: [360], speed: 1 },
+  { src: pantalla, alt: 'Salón con techo de estrellas, sillones rosados y una pantalla grande', cls: 'col-span-1 row-span-1 lg:col-span-2 lg:row-span-1', sizes: '(min-width: 1024px) 33vw, 80vw', widths: [360], speed: 1.2 },
+  { src: logoEntrada, alt: 'El logo de Moon proyectado en blanco sobre el piso de la entrada', cls: 'col-span-1 row-span-2 lg:col-span-2 lg:row-span-2', sizes: '(min-width: 1024px) 33vw, 90vw', widths: [400, 640, 900], speed: 0.8 },
+  { src: entrada, alt: 'Entrada de Moon de día, con el letrero vertical y piso de adoquín', cls: 'col-span-1 row-span-2 lg:col-span-2 lg:row-span-2', sizes: '(min-width: 1024px) 33vw, 65vw', widths: [360], speed: 1.5 },
+  { src: gobo, alt: 'Proyección del logo de Moon Bistro Bar sobre adoquines rojos', cls: 'col-span-2 row-span-2 lg:col-span-2 lg:row-span-2', sizes: '(min-width: 1024px) 33vw, 100vw', widths: [360], speed: 1 },
+];
+---
+
+<section id="galeria" aria-labelledby="galeria-title" class="section-pad bg-night">
+  <div class="wrap">
+    <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+      <h2 id="galeria-title" class="text-h2 text-moon" data-reveal>Galería</h2>
+      <a
+        href="https://www.instagram.com/moonbistrobarsps/"
+        class="link-draw inline-flex items-center gap-2 self-start text-gold lg:self-auto"
+        rel="noopener"
+        target="_blank"
+      >
+        Más fotos en Instagram
+      </a>
+    </div>
+
+    <div class="mt-12 grid auto-rows-[10.5rem] grid-flow-dense grid-cols-2 gap-3 sm:auto-rows-[13rem] sm:gap-4 lg:auto-rows-[12.5rem] lg:grid-cols-6 lg:gap-6">
+      {shots.map((s) => <Photo src={s.src} alt={s.alt} widths={s.widths} sizes={s.sizes} class={s.cls} parallax={s.speed} />)}
+    </div>
+  </div>
+</section>

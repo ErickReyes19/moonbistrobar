@@ -1,0 +1,91 @@
+---
+import Icon from './Icon.astro';
+import { rating, featuredQuote, reviews, topics } from '../data/reviews';
+import { site } from '../data/site';
+
+const max = Math.max(...rating.distribution.map((d) => d.count));
+const starPath =
+  'M12 2.6l2.83 6.07 6.67.73-4.97 4.5 1.36 6.56L12 17.2l-5.89 3.26 1.36-6.56L2.5 9.4l6.67-.73z';
+---
+
+<section id="resenas" aria-labelledby="resenas-title" class="section-pad border-t border-gold/10 bg-night">
+  <div class="wrap grid grid-cols-1 gap-x-6 gap-y-16 lg:grid-cols-12">
+    <!-- Calificación real de Google -->
+    <div class="lg:col-span-4">
+      <h2 id="resenas-title" class="text-h2 text-moon" data-reveal>Reseñas</h2>
+      <div class="mt-10 flex items-end gap-4">
+        <p class="tabular font-display text-h2 !leading-[0.9] text-gold">{rating.value.toFixed(1)}</p>
+        <div class="pb-1">
+          <p class="flex gap-0.5 text-gold" aria-label={`${rating.value} de 5 estrellas`}>
+            {
+              [1, 2, 3, 4, 5].map((i) => (
+                <svg viewBox="0 0 24 24" class="size-4" aria-hidden="true">
+                  <path d={starPath} fill={i <= Math.floor(rating.value) ? 'currentColor' : 'none'} stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                </svg>
+              ))
+            }
+          </p>
+          <p class="mt-1 text-sm text-champagne">{rating.total} reseñas en Google</p>
+        </div>
+      </div>
+
+      <dl class="mt-8 max-w-[22rem] space-y-2.5">
+        {
+          rating.distribution.map((d) => (
+            <div class="grid grid-cols-[1.5rem_1fr_2rem] items-center gap-3 text-sm">
+              <dt class="tabular text-rose">{d.stars}<span class="sr-only"> estrellas</span></dt>
+              <dd class="h-1.5 overflow-hidden rounded-full bg-night-raised" aria-hidden="true">
+                <span class="block h-full origin-left rounded-full bg-gold" style={`width:${(d.count / max) * 100}%`} data-bar />
+              </dd>
+              <dd class="tabular text-right text-champagne">{d.count}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+
+    <!-- Cita real y calificaciones detalladas -->
+    <div class="lg:col-span-7 lg:col-start-6">
+      <figure>
+        <blockquote class="font-display text-[clamp(2rem,1.4rem+2.4vw,3.25rem)] leading-[1.12] text-moon">
+          <p>“{featuredQuote.text}”</p>
+        </blockquote>
+        <figcaption class="mt-5 text-champagne">{featuredQuote.author}, en Google</figcaption>
+      </figure>
+
+      <ul class="mt-14 grid grid-cols-1 border-t border-gold/20 sm:grid-cols-2 sm:gap-x-10">
+        {
+          reviews.map((r) => (
+            <li class="border-b border-gold/20 py-6">
+              <div class="flex items-baseline justify-between gap-4">
+                <p class="font-medium text-moon">{r.author}</p>
+                <p class="tabular text-sm text-rose">{r.year}</p>
+              </div>
+              <p class="mt-1 flex gap-0.5 text-gold" aria-label={`${r.stars} de 5 estrellas`}>
+                {Array.from({ length: r.stars }).map(() => (
+                  <svg viewBox="0 0 24 24" class="size-3.5" aria-hidden="true">
+                    <path d={starPath} fill="currentColor" />
+                  </svg>
+                ))}
+              </p>
+              <p class="mt-3 text-sm text-champagne">{r.context}</p>
+              <p class="tabular mt-1 text-sm text-rose">
+                Comida {r.scores.food} · Servicio {r.scores.service} · Ambiente {r.scores.atmosphere}
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <p class="text-sm text-rose">
+          Lo que más mencionan: {topics.map((t) => t.label.toLowerCase()).join(', ')}.
+        </p>
+        <a href={site.maps.reviews} class="link-draw inline-flex shrink-0 items-center gap-1.5 text-gold" rel="noopener" target="_blank">
+          Leer las reseñas en Google
+          <Icon name="external" class="size-4" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
